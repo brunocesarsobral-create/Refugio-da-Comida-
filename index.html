@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refúgio da Comida | Marmitas Caseiras</title>
+<meta name="description" content="Marmitas saborosas, fresquinhas e caprichadas. Peça pelo WhatsApp da Refúgio da Comida.">
+<style>
+:root{--red:#b92d20;--dark:#24201e;--cream:#fff8ef;--gold:#e6a43a;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:var(--cream)}
+header{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 12px #0001}
+.nav{max-width:1150px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:24px;font-weight:900;color:var(--red)}.logo span{color:var(--gold)}
+nav a{margin-left:22px;color:var(--dark);text-decoration:none;font-weight:700}
+.hero{min-height:560px;display:grid;place-items:center;text-align:center;color:#fff;background:linear-gradient(#0007,#0008),url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero-content{max-width:850px;padding:70px 20px}.hero h1{font-size:clamp(42px,7vw,76px);margin:0 0 16px}.hero p{font-size:21px;line-height:1.5}.btn{display:inline-block;background:var(--red);color:#fff;padding:16px 24px;border-radius:10px;text-decoration:none;font-weight:800;border:0;cursor:pointer}.btn.gold{background:var(--gold);color:#24190d}
+section{padding:70px 20px}.container{max-width:1150px;margin:auto}.title{text-align:center;font-size:36px;margin:0 0 12px}.subtitle{text-align:center;color:#6e625a;margin:0 0 38px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #00000012}.card img{width:100%;height:220px;object-fit:cover}.card-body{padding:20px}.price{font-size:28px;font-weight:900;color:var(--red);margin:8px 0 16px}
+.about{background:#fff}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.about img{width:100%;border-radius:20px}.about p{font-size:18px;line-height:1.7}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.step{background:#fff;padding:25px;border-radius:16px;text-align:center}.num{font-size:36px;font-weight:900;color:var(--red)}
+.cta{text-align:center;background:var(--dark);color:#fff}.cta h2{font-size:40px;margin-top:0}
+footer{background:#171412;color:#fff;text-align:center;padding:28px 20px}.whats{position:fixed;right:20px;bottom:20px;background:#25d366;color:#fff;text-decoration:none;border-radius:50px;padding:15px 20px;font-weight:900;box-shadow:0 5px 20px #0003;z-index:20}
+@media(max-width:800px){nav{display:none}.cards,.steps,.about-grid{grid-template-columns:1fr}.hero{min-height:520px}.title{font-size:30px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">REFÚGIO <span>DA COMIDA</span></div><nav><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre nós</a><a href="#pedido">Como pedir</a></nav></div></header>
+
+<main>
+<section class="hero">
+<div class="hero-content">
+<h1>Sabor de comida de verdade.</h1>
+<p>Marmitas fresquinhas, caprichadas e preparadas com carinho para deixar seu dia mais gostoso.</p>
+<a class="btn gold" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20na%20Ref%C3%BAgio%20da%20Comida." target="_blank">PEDIR PELO WHATSAPP</a>
+</div>
+</section>
+
+<section id="cardapio"><div class="container">
+<h2 class="title">Nosso cardápio</h2>
+<p class="subtitle">Opções a partir de R$ 22,00. Consulte a disponibilidade do dia pelo WhatsApp.</p>
+<div class="cards">
+<article class="card"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Marmita Caseira</h3><p>Arroz, feijão, acompanhamento, salada e proteína do dia.</p><div class="price">A partir de R$ 22,00</div><a class="btn" href="https://wa.me/5511966620625?text=Quero%20saber%20o%20card%C3%A1pio%20da%20marmita%20caseira." target="_blank">Quero pedir</a></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Marmita Especial</h3><p>Uma combinação caprichada para quem quer uma refeição completa e saborosa.</p><div class="price">Consulte o preço</div><a class="btn" href="https://wa.me/5511966620625?text=Quero%20saber%20as%20op%C3%A7%C3%B5es%20de%20marmita%20especial." target="_blank">Quero pedir</a></div></article>
+<article class="card"><img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Marmita da Semana</h3><p>Pratos variados para você ter comida gostosa todos os dias.</p><div class="price">Consulte o preço</div><a class="btn" href="https://wa.me/5511966620625?text=Quero%20conhecer%20a%20marmita%20da%20semana." target="_blank">Ver opções</a></div></article>
+</div></div></section>
+
+<section class="about" id="sobre"><div class="container about-grid">
+<img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1000&q=85" alt="Ingredientes e comida preparada">
+<div><h2 class="title" style="text-align:left">Comida feita para você</h2><p>No Refúgio da Comida, nossa proposta é simples: oferecer uma refeição saborosa, bem servida e preparada com cuidado. Ideal para o almoço do trabalho, da família ou para aquele dia corrido.</p><a class="btn" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20a%20Ref%C3%BAgio%20da%20Comida." target="_blank">Falar conosco</a></div>
+</div></section>
+
+<section id="pedido"><div class="container">
+<h2 class="title">Como pedir?</h2><p class="subtitle">É rápido e fácil.</p>
+<div class="steps"><div class="step"><div class="num">1</div><h3>Escolha</h3><p>Veja as opções disponíveis no dia.</p></div><div class="step"><div class="num">2</div><h3>Chame no WhatsApp</h3><p>Envie seu pedido para nossa equipe.</p></div><div class="step"><div class="num">3</div><h3>Receba e aproveite</h3><p>Agora é só esperar sua marmita chegar.</p></div></div>
+</div></section>
+
+<section class="cta"><div class="container"><h2>Está com fome?</h2><p>Faça seu pedido agora pelo WhatsApp.</p><a class="btn gold" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Quero%20fazer%20meu%20pedido." target="_blank">FAZER MEU PEDIDO</a></div></section>
+</main>
+
+<footer><strong>REFÚGIO DA COMIDA</strong><p>Comida caseira, sabor e carinho.</p><p>WhatsApp: (11) 96662-0625</p><p>© 2026 Refúgio da Comida. Todos os direitos reservados.</p></footer>
+<a class="whats" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Ref%C3%BAgio%20da%20Comida." target="_blank">💬 WhatsApp</a>
+</body></html>
