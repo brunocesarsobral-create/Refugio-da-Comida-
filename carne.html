@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnes — Refúgio da Comida</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0.92)), url('https://images.unsplash.com/photo-1546069901-b273219e6a56?w=1200') center/cover no-repeat;
+            color: #fff;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        .voltar { display: inline-block; color: #ffcc00; text-decoration: none; padding: 20px 30px; font-weight: bold; font-size: 16px; }
+        .titulo-pagina { text-align: center; font-size: 32px; color: #ffcc00; margin-bottom: 10px; padding: 0 20px; }
+        .subtitulo { text-align: center; color: #bbb; margin-bottom: 15px; padding: 0 20px; font-size: 16px; }
+        .aviso { text-align: center; font-size: 13px; color: #ffcc00; font-style: italic; margin-bottom: 35px; padding: 0 20px; line-height: 1.5; }
+        .itens { max-width: 750px; margin: 0 auto; padding: 0 20px; }
+        .item {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+            text-decoration: none;
+            display: block;
+            color: #fff;
+        }
+        .item:hover { border-left-color: #ffcc00; background: rgba(255,204,0,0.1); transform: translateX(5px); }
+        .item-nome { font-size: 19px; font-weight: bold; margin-bottom: 8px; line-height: 1.4; }
+        .item-desc { font-size: 14px; color: #aaa; margin-bottom: 10px; line-height: 1.5; }
+        .item-preco { font-size: 20px; color: #25d366; font-weight: bold; }
+        footer { text-align: center; padding: 30px 20px; font-size: 14px; color: #888; border-top: 1px solid #ffffff15; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="voltar">← Voltar ao Cardápio</a>
+
+<h1 class="titulo-pagina">🥩 Marmitas de Carne</h1>
+<p class="subtitulo">Clique no prato para pedir pelo WhatsApp</p>
+<p class="aviso">*Valores sujeitos a alterações sem prévio aviso, conforme variação do mercado</p>
+
+<div class="itens">
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Bisteca com Fritas" target="_blank" class="item">
+        <div class="item-nome">Bisteca com Fritas</div>
+        <div class="item-desc">Arroz, feijão e batata frita</div>
+        <div class="item-preco">—</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Bisteca com Fritas e 2 Ovos - R$ 23,00" target="_blank" class="item">
+        <div class="item-nome">Bisteca com Fritas e 2 Ovos</div>
+        <div class="item-desc">Arroz, feijão, batata e 2 ovos</div>
+        <div class="item-preco">R$ 23,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Contra Filé com Fritas - R$ 24,00" target="_blank" class="item">
+        <div class="item-nome">Contra Filé com Fritas</div>
+        <div class="item-desc">Arroz, feijão e batata frita</div>
+        <div class="item-preco">R$ 24,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Contra Filé à Parmegiana com Fritas - R$ 30,00" target="_blank" class="item">
+        <div class="item-nome">Contra Filé à Parmegiana com Fritas</div>
+        <div class="item-desc">Arroz, molho e batata frita</div>
+        <div class="item-preco">R$ 30,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Picanha com Fritas - R$ 45,00 (1 pessoa)" target="_blank" class="item">
+        <div class="item-nome">Picanha com Fritas — 1 pessoa</div>
+        <div class="item-desc">Arroz, feijão, farofa e batata</div>
+        <div class="item-preco">R$ 45,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Picanha com Fritas para 2 pessoas - R$ 60,00" target="_blank" class="item">
+        <div class="item-nome">Picanha com Fritas — 2 pessoas</div>
+        <div class="item-desc">Arroz, feijão, farofa e batata</div>
+        <div class="item-preco">R$ 60,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Chuleta com Fritas - R$ 30,00" target="_blank" class="item">
+        <div class="item-nome">Chuleta com Fritas</div>
+        <div class="item-desc">Arroz, feijão e batata frita</div>
+        <div class="item-preco">R$ 30,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Bife e Ovo - R$ 24,00" target="_blank" class="item">
+        <div class="item-nome">Bife e Ovo</div>
+        <div class="item-desc">Arroz, feijão, bife e ovo</div>
+        <div class="item-preco">R$ 24,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Calabresa com Fritas" target="_blank" class="item">
+        <div class="item-nome">Calabresa com Fritas</div>
+        <div class="item-desc">Arroz, feijão e batata frita</div>
+        <div class="item-preco">—</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Calabresa com Fritas e 2 Ovos - R$ 23,00" target="_blank" class="item">
+        <div class="item-nome">Calabresa com Fritas e 2 Ovos</div>
+        <div class="item-desc">Arroz, feijão, batata e 2 ovos</div>
+        <div class="item-preco">R$ 23,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Toscana com Fritas" target="_blank" class="item">
+        <div class="item-nome">Toscana com Fritas</div>
+        <div class="item-desc">Arroz, feijão e batata frita</div>
+        <div class="item-preco">—</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Toscana com 2 Ovos e Fritas - R$ 25,00" target="_blank" class="item">
+        <div class="item-nome">Toscana com 2 Ovos e Fritas</div>
+        <div class="item-desc">Arroz, feijão, batata e 2 ovos</div>
+        <div class="item-preco">R$ 25,00</div>
+    </a>
+</div>
+
+<footer>
+    <p>📞 (11) 96662-0625 — Refúgio da Comida</p>
+</footer>
+
+</body>
+</html>

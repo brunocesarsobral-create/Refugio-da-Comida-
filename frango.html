@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frango — Refúgio da Comida</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0.92)), url('https://images.unsplash.com/photo-1546069901-b273219e6a56?w=1200') center/cover no-repeat;
+            color: #fff;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        .voltar {
+            display: inline-block;
+            color: #ffcc00;
+            text-decoration: none;
+            padding: 20px 30px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .voltar:hover { text-decoration: underline; }
+        .titulo-pagina {
+            text-align: center;
+            font-size: 32px;
+            color: #ffcc00;
+            margin-bottom: 10px;
+            padding: 0 20px;
+        }
+        .subtitulo {
+            text-align: center;
+            color: #bbb;
+            margin-bottom: 15px;
+            padding: 0 20px;
+            font-size: 16px;
+        }
+        .aviso {
+            text-align: center;
+            font-size: 13px;
+            color: #ffcc00;
+            font-style: italic;
+            margin-bottom: 35px;
+            padding: 0 20px;
+            line-height: 1.5;
+        }
+        .itens {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .item {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 22px 25px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+            text-decoration: none;
+            display: block;
+            color: #fff;
+        }
+        .item:hover {
+            border-left-color: #ffcc00;
+            background: rgba(255,204,0,0.1);
+            transform: translateX(5px);
+        }
+        .item-nome {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .item-desc {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .item-preco {
+            font-size: 20px;
+            color: #25d366;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #ffffff15;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="voltar">← Voltar ao Cardápio</a>
+
+<h1 class="titulo-pagina">🍗 Marmitas de Frango</h1>
+<p class="subtitulo">Clique no prato para pedir pelo WhatsApp</p>
+<p class="aviso">*Valores sujeitos a alterações sem prévio aviso, conforme variação do mercado</p>
+
+<div class="itens">
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Filé de Frango Grelhado" target="_blank" class="item">
+        <div class="item-nome">Filé de Frango Grelhado</div>
+        <div class="item-desc">Arroz, feijão, salada e batata</div>
+        <div class="item-preco">—</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Filé de Frango Empanado" target="_blank" class="item">
+        <div class="item-nome">Filé de Frango Empanado</div>
+        <div class="item-desc">Arroz, feijão, salada e batata frita</div>
+        <div class="item-preco">—</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Frango à Parmegiana - R$ 23,00" target="_blank" class="item">
+        <div class="item-nome">Frango à Parmegiana</div>
+        <div class="item-desc">Arroz e molho de tomate</div>
+        <div class="item-preco">R$ 23,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Frango à Parmegiana com Fritas - R$ 28,00" target="_blank" class="item">
+        <div class="item-nome">Frango à Parmegiana com Fritas</div>
+        <div class="item-desc">Arroz, molho e batata frita</div>
+        <div class="item-preco">R$ 28,00</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Filé de Frango com Fritas" target="_blank" class="item">
+        <div class="item-nome">Filé de Frango com Fritas</div>
+        <div class="item-desc">Arroz, feijão e batata frita</div>
+        <div class="item-preco">—</div>
+    </a>
+
+    <a href="https://wa.me/5511966620625?text=Quero pedir: Marmita de Frango Completa - R$ 24,00" target="_blank" class="item">
+        <div class="item-nome">Marmita de Frango Completa</div>
+        <div class="item-desc">Arroz, feijão, frango grelhado, salada e legumes</div>
+        <div class="item-preco">R$ 24,00</div>
+    </a>
+</div>
+
+<footer>
+    <p>📞 (11) 96662-0625 — Refúgio da Comida</p>
+</footer>
+
+</body>
+</html>
