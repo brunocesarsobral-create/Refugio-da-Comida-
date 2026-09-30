@@ -1,62 +1,354 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Refúgio da Comida | Marmitas Caseiras</title>
-<meta name="description" content="Marmitas saborosas, fresquinhas e caprichadas. Peça pelo WhatsApp da Refúgio da Comida.">
-<style>
-:root{--red:#b92d20;--dark:#24201e;--cream:#fff8ef;--gold:#e6a43a;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:var(--cream)}
-header{position:sticky;top:0;z-index:10;background:#fff;box-shadow:0 2px 12px #0001}
-.nav{max-width:1150px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:24px;font-weight:900;color:var(--red)}.logo span{color:var(--gold)}
-nav a{margin-left:22px;color:var(--dark);text-decoration:none;font-weight:700}
-.hero{min-height:560px;display:grid;place-items:center;text-align:center;color:#fff;background:linear-gradient(#0007,#0008),url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85') center/cover}
-.hero-content{max-width:850px;padding:70px 20px}.hero h1{font-size:clamp(42px,7vw,76px);margin:0 0 16px}.hero p{font-size:21px;line-height:1.5}.btn{display:inline-block;background:var(--red);color:#fff;padding:16px 24px;border-radius:10px;text-decoration:none;font-weight:800;border:0;cursor:pointer}.btn.gold{background:var(--gold);color:#24190d}
-section{padding:70px 20px}.container{max-width:1150px;margin:auto}.title{text-align:center;font-size:36px;margin:0 0 12px}.subtitle{text-align:center;color:#6e625a;margin:0 0 38px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #00000012}.card img{width:100%;height:220px;object-fit:cover}.card-body{padding:20px}.price{font-size:28px;font-weight:900;color:var(--red);margin:8px 0 16px}
-.about{background:#fff}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.about img{width:100%;border-radius:20px}.about p{font-size:18px;line-height:1.7}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.step{background:#fff;padding:25px;border-radius:16px;text-align:center}.num{font-size:36px;font-weight:900;color:var(--red)}
-.cta{text-align:center;background:var(--dark);color:#fff}.cta h2{font-size:40px;margin-top:0}
-footer{background:#171412;color:#fff;text-align:center;padding:28px 20px}.whats{position:fixed;right:20px;bottom:20px;background:#25d366;color:#fff;text-decoration:none;border-radius:50px;padding:15px 20px;font-weight:900;box-shadow:0 5px 20px #0003;z-index:20}
-@media(max-width:800px){nav{display:none}.cards,.steps,.about-grid{grid-template-columns:1fr}.hero{min-height:520px}.title{font-size:30px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refúgio da Comida</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body {
+            background: linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.92)), url('https://images.unsplash.com/photo-1546069901-b273219e6a56?w=1200') center/cover no-repeat;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 25px;
+        }
+        .logo { font-size: 20px; font-weight: bold; color: #ffcc00; }
+        .whats-top {
+            background: #25d366;
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5px 25px;
+            max-width: 1250px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .hero h1 {
+            font-size: 28px;
+            color: #ffcc00;
+            margin-bottom: 3px;
+        }
+        .hero p { font-size: 12px; color: #ccc; margin-bottom: 6px; }
+        .btn-whats {
+            display: inline-block;
+            background: #25d366;
+            color: #000;
+            padding: 7px 22px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .aviso-valores {
+            font-size: 10px;
+            color: #ffcc00;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .cardapio {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .categoria {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 8px 10px;
+        }
+        .cat-titulo {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #ffcc0044;
+            padding-bottom: 3px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            font-size: 11px;
+            border-bottom: 1px solid #ffffff10;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .item:hover { background: #ffcc0015; padding-left: 4px; border-radius: 4px; }
+        .item-nome { flex: 1; }
+        .item-preco { color: #25d366; font-weight: bold; white-space: nowrap; margin-left: 6px; }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+        .info-item h4 { color: #ffcc00; margin-bottom: 2px; font-size: 12px; }
+
+        footer {
+            text-align: center;
+            padding: 5px;
+            font-size: 10px;
+            color: #777;
+        }
+
+        @media (max-width: 950px) {
+            .cardapio { grid-template-columns: repeat(2, 1fr); }
+            .info { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 22px; }
+        }
+        @media (max-width: 550px) {
+            .cardapio { grid-template-columns: 1fr; }
+            main { padding: 5px 12px; }
+            .item { font-size: 11px; }
+        }
+    </style>
 </head>
 <body>
-<header><div class="nav"><div class="logo">REFÚGIO <span>DA COMIDA</span></div><nav><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre nós</a><a href="#pedido">Como pedir</a></nav></div></header>
+
+<header>
+    <div class="logo">🍽️ Refúgio da Comida</div>
+    <a href="https://wa.me/5511966620625?text=Olá! Gostaria de fazer um pedido." class="whats-top" target="_blank">📱 WhatsApp</a>
+</header>
 
 <main>
-<section class="hero">
-<div class="hero-content">
-<h1>Sabor de comida de verdade.</h1>
-<p>Marmitas fresquinhas, caprichadas e preparadas com carinho para deixar seu dia mais gostoso.</p>
-<a class="btn gold" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido%20na%20Ref%C3%BAgio%20da%20Comida." target="_blank">PEDIR PELO WHATSAPP</a>
-</div>
-</section>
+    <div class="hero">
+        <h1>REFÚGIO DA COMIDA</h1>
+        <p>Comida caseira, sabor que abraça — clique no prato para pedir!</p>
+        <a href="https://wa.me/5511966620625?text=Olá! Quero fazer um pedido." class="btn-whats" target="_blank">💬 PEDIR PELO WHATSAPP</a>
+        <p class="aviso-valores">*Valores sujeitos a alterações sem prévio aviso, conforme variação do mercado</p>
+    </div>
 
-<section id="cardapio"><div class="container">
-<h2 class="title">Nosso cardápio</h2>
-<p class="subtitle">Opções a partir de R$ 22,00. Consulte a disponibilidade do dia pelo WhatsApp.</p>
-<div class="cards">
-<article class="card"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Marmita Caseira</h3><p>Arroz, feijão, acompanhamento, salada e proteína do dia.</p><div class="price">A partir de R$ 22,00</div><a class="btn" href="https://wa.me/5511966620625?text=Quero%20saber%20o%20card%C3%A1pio%20da%20marmita%20caseira." target="_blank">Quero pedir</a></div></article>
-<article class="card"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Marmita Especial</h3><p>Uma combinação caprichada para quem quer uma refeição completa e saborosa.</p><div class="price">Consulte o preço</div><a class="btn" href="https://wa.me/5511966620625?text=Quero%20saber%20as%20op%C3%A7%C3%B5es%20de%20marmita%20especial." target="_blank">Quero pedir</a></div></article>
-<article class="card"><img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Marmita da Semana</h3><p>Pratos variados para você ter comida gostosa todos os dias.</p><div class="price">Consulte o preço</div><a class="btn" href="https://wa.me/5511966620625?text=Quero%20conhecer%20a%20marmita%20da%20semana." target="_blank">Ver opções</a></div></article>
-</div></div></section>
+    <div class="cardapio">
+        <!-- CARNE E PRATOS PRINCIPAIS -->
+        <div class="categoria">
+            <div class="cat-titulo">🥩 Carnes & Pratos Principais</div>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Filé de Frango com Fritas" target="_blank">
+                <span class="item-nome">Filé de Frango com Fritas</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Bisteca com Fritas" target="_blank">
+                <span class="item-nome">Bisteca com Fritas</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Calabresa com Fritas" target="_blank">
+                <span class="item-nome">Calabresa com Fritas</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Toscana com Fritas" target="_blank">
+                <span class="item-nome">Toscana com Fritas</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Bisteca c/ Ovo" target="_blank">
+                <span class="item-nome">Bisteca c/ Ovo</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Calabresa Acebolada" target="_blank">
+                <span class="item-nome">Calabresa Acebolada</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Omelete" target="_blank">
+                <span class="item-nome">Omelete</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Toscana" target="_blank">
+                <span class="item-nome">Toscana</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Steak com Ovo" target="_blank">
+                <span class="item-nome">Steak com Ovo</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Hambúrguer Empanado com Ovo" target="_blank">
+                <span class="item-nome">Hambúrguer Empanado c/ Ovo</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Filé de Frango Grelhado" target="_blank">
+                <span class="item-nome">Filé de Frango Grelhado</span>
+                <span class="item-preco">—</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Filé de Frango Empanado" target="_blank">
+                <span class="item-nome">Filé de Frango Empanado</span>
+                <span class="item-preco">—</span>
+            </a>
+        </div>
 
-<section class="about" id="sobre"><div class="container about-grid">
-<img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1000&q=85" alt="Ingredientes e comida preparada">
-<div><h2 class="title" style="text-align:left">Comida feita para você</h2><p>No Refúgio da Comida, nossa proposta é simples: oferecer uma refeição saborosa, bem servida e preparada com cuidado. Ideal para o almoço do trabalho, da família ou para aquele dia corrido.</p><a class="btn" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20a%20Ref%C3%BAgio%20da%20Comida." target="_blank">Falar conosco</a></div>
-</div></section>
+        <!-- PEIXE & PARMEGIANAS -->
+        <div class="categoria">
+            <div class="cat-titulo">🐟 Peixes & Parmegianas</div>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Peixe à Parmegiana com Batata Frita - R$ 35,00" target="_blank">
+                <span class="item-nome">Peixe à Parmegiana c/ Batata Frita</span>
+                <span class="item-preco">R$ 35,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Filé de Peixe à Parmegiana com Fritas - R$ 28,00" target="_blank">
+                <span class="item-nome">Filé de Peixe à Parmegiana c/ Fritas</span>
+                <span class="item-preco">R$ 28,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Picanha com Fritas - R$ 45,00 (1 pessoa) / R$ 60,00 (2 pessoas)" target="_blank">
+                <span class="item-nome">Picanha c/ Fritas (1 pessoa)</span>
+                <span class="item-preco">R$ 45,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Picanha com Fritas para 2 pessoas - R$ 60,00" target="_blank">
+                <span class="item-nome">Picanha p/ 2 pessoas</span>
+                <span class="item-preco">R$ 60,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Frango à Parmegiana - R$ 23,00" target="_blank">
+                <span class="item-nome">Frango à Parmegiana</span>
+                <span class="item-preco">R$ 23,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Frango à Parmegiana com Fritas - R$ 28,00" target="_blank">
+                <span class="item-nome">Frango à Parmegiana c/ Fritas</span>
+                <span class="item-preco">R$ 28,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Contra Filé com Fritas - R$ 24,00" target="_blank">
+                <span class="item-nome">Contra Filé c/ Fritas</span>
+                <span class="item-preco">R$ 24,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Contra Filé à Parmegiana com Fritas - R$ 30,00" target="_blank">
+                <span class="item-nome">Contra Filé à Parmegiana c/ Fritas</span>
+                <span class="item-preco">R$ 30,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Chuleta com Fritas - R$ 30,00" target="_blank">
+                <span class="item-nome">Chuleta c/ Fritas</span>
+                <span class="item-preco">R$ 30,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Filé de Peixe Merluza com Fritas - R$ 24,00" target="_blank">
+                <span class="item-nome">Filé de Peixe Merluza c/ Fritas</span>
+                <span class="item-preco">R$ 24,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Filé de Peixe Tilápia com Fritas - R$ 40,00" target="_blank">
+                <span class="item-nome">Filé de Peixe Tilápia c/ Fritas</span>
+                <span class="item-preco">R$ 40,00</span>
+            </a>
+        </div>
 
-<section id="pedido"><div class="container">
-<h2 class="title">Como pedir?</h2><p class="subtitle">É rápido e fácil.</p>
-<div class="steps"><div class="step"><div class="num">1</div><h3>Escolha</h3><p>Veja as opções disponíveis no dia.</p></div><div class="step"><div class="num">2</div><h3>Chame no WhatsApp</h3><p>Envie seu pedido para nossa equipe.</p></div><div class="step"><div class="num">3</div><h3>Receba e aproveite</h3><p>Agora é só esperar sua marmita chegar.</p></div></div>
-</div></section>
+        <!-- PRATOS COMPLETOS & OVOS -->
+        <div class="categoria">
+            <div class="cat-titulo">🍳 Pratos Completos & Ovos</div>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Bife e Ovo - R$ 24,00" target="_blank">
+                <span class="item-nome">Bife e Ovo</span>
+                <span class="item-preco">R$ 24,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Omelete Completo - R$ 22,00" target="_blank">
+                <span class="item-nome">Omelete Completo</span>
+                <span class="item-preco">R$ 22,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Calabresa com Fritas e 2 Ovos - R$ 23,00" target="_blank">
+                <span class="item-nome">Calabresa c/ Fritas e 2 Ovos</span>
+                <span class="item-preco">R$ 23,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Bisteca com Fritas e 2 Ovos - R$ 23,00" target="_blank">
+                <span class="item-nome">Bisteca c/ Fritas e 2 Ovos</span>
+                <span class="item-preco">R$ 23,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Toscana com 2 Ovos e Fritas - R$ 25,00" target="_blank">
+                <span class="item-nome">Toscana c/ 2 Ovos e Fritas</span>
+                <span class="item-preco">R$ 25,00</span>
+            </a>
+            <div style="height:3px"></div>
+            <div class="cat-titulo">🍔 Lanches</div>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: X Salada - R$ 10,00" target="_blank">
+                <span class="item-nome">X Salada</span>
+                <span class="item-preco">R$ 10,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: X Bacon - R$ 15,00" target="_blank">
+                <span class="item-nome">X Bacon</span>
+                <span class="item-preco">R$ 15,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: X Tudo - R$ 18,00" target="_blank">
+                <span class="item-nome">X Tudo</span>
+                <span class="item-preco">R$ 18,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: X Egg - R$ 13,00" target="_blank">
+                <span class="item-nome">X Egg</span>
+                <span class="item-preco">R$ 13,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: X Burger - R$ 9,00" target="_blank">
+                <span class="item-nome">X Burger</span>
+                <span class="item-preco">R$ 9,00</span>
+            </a>
+        </div>
 
-<section class="cta"><div class="container"><h2>Está com fome?</h2><p>Faça seu pedido agora pelo WhatsApp.</p><a class="btn gold" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Quero%20fazer%20meu%20pedido." target="_blank">FAZER MEU PEDIDO</a></div></section>
+        <!-- BEBIDAS -->
+        <div class="categoria">
+            <div class="cat-titulo">🥤 Bebidas</div>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Suco Laranja - R$ 8,00" target="_blank">
+                <span class="item-nome">Suco Laranja</span>
+                <span class="item-preco">R$ 8,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Suco Limão - R$ 8,00" target="_blank">
+                <span class="item-nome">Suco Limão</span>
+                <span class="item-preco">R$ 8,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Suco Manga - R$ 8,00" target="_blank">
+                <span class="item-nome">Suco Manga</span>
+                <span class="item-preco">R$ 8,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Suco Goiaba - R$ 8,00" target="_blank">
+                <span class="item-nome">Suco Goiaba</span>
+                <span class="item-preco">R$ 8,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Refrigerante de 2 Litros - R$ 15,00" target="_blank">
+                <span class="item-nome">Refrigerante 2 Litros</span>
+                <span class="item-preco">R$ 15,00</span>
+            </a>
+            <a class="item" href="https://wa.me/5511966620625?text=Quero pedir: Refrigerante em Lata - R$ 6,00" target="_blank">
+                <span class="item-nome">Refrigerante Lata</span>
+                <span class="item-preco">R$ 6,00</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="info-item">
+            <h4>📍 Entrega</h4>
+            <p>Consulte bairros e taxa</p>
+        </div>
+        <div class="info-item">
+            <h4>🕒 Horário</h4>
+            <p>Segunda a Sábado<br>11h às 15h</p>
+        </div>
+        <div class="info-item">
+            <h4>💳 Pagamento</h4>
+            <p>Dinheiro, Pix, Cartão<br>na entrega</p>
+        </div>
+        <div class="info-item">
+            <h4>📞 Contato</h4>
+            <p>(11) 96662-0625<br>WhatsApp</p>
+        </div>
+    </div>
 </main>
 
-<footer><strong>REFÚGIO DA COMIDA</strong><p>Comida caseira, sabor e carinho.</p><p>WhatsApp: (11) 96662-0625</p><p>© 2026 Refúgio da Comida. Todos os direitos reservados.</p></footer>
-<a class="whats" href="https://wa.me/5511966620625?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Ref%C3%BAgio%20da%20Comida." target="_blank">💬 WhatsApp</a>
-</body></html>
+<footer>
+    Refúgio da Comida — Comida caseira, sabor que abraça. © 2026
+</footer>
+
+</body>
+</html>
