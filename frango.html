@@ -7,165 +7,223 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         :root { --dourado: #f5c500; --verde: #25c052; --marrom: #2b1e10; --bege: #fff8e8; --escuro: #1a1208; --cinza: #eee; }
-        body { background: var(--bege); color: var(--marrom); line-height: 1.8; }
-        header { background: var(--escuro); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { color: var(--dourado); font-size: 22px; font-weight: bold; text-decoration: none; }
-        .voltar { color: #fff; text-decoration: none; margin: 20px 0; display: inline-block; }
-        .btn-whats { background: var(--verde); color: #fff; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; }
-        main { max-width: 900px; margin: 0 auto; padding: 30px 5%; }
-        h1 { font-size: 30px; margin-bottom: 10px; color: var(--escuro); text-align: center; }
-        .subtitulo { text-align: center; margin-bottom: 25px; color: #666; }
-        .foto-destaque { width: 100%; border-radius: 12px; margin-bottom: 25px; object-fit: cover; height: 250px; }
+        body { background: var(--bege); color: var(--marrom); line-height: 1.5; padding-top: 70px; }
         
-        .opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        header { 
+            background: var(--escuro); 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .logo { color: var(--dourado); font-size: 18px; font-weight: bold; text-decoration: none; }
+        nav a { color: #fff; margin: 0 6px; text-decoration: none; font-size: 13px; }
+        nav a:hover { color: var(--dourado); }
+        .btn-whats { background: var(--verde); color: #fff; padding: 8px 14px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 13px; }
+        
+        main { max-width: 1100px; margin: 0 auto; padding: 20px 5%; display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+        @media (max-width: 768px) { main { grid-template-columns: 1fr; } }
+        
+        h1 { font-size: 22px; margin-bottom: 5px; color: var(--escuro); text-align: center; grid-column: 1 / -1; }
+        .subtitulo { text-align: center; margin-bottom: 15px; color: #666; font-size: 14px; grid-column: 1 / -1; }
+        
+        .opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
         .opcao { 
             background: #fff; 
-            padding: 20px; 
+            padding: 10px; 
             border: 2px solid var(--cinza); 
-            border-radius: 12px; 
+            border-radius: 10px; 
             cursor: pointer; 
             transition: all 0.2s;
+            text-align: center;
         }
         .opcao:hover { border-color: #ccc; }
-        .opcao.selecionada { 
-            border-color: var(--verde); 
-            background: #eafaf1; 
-        }
-        .opcao h3 { margin-bottom: 8px; font-size: 18px; }
-        .opcao p { color: #666; margin-bottom: 10px; }
-        .preco { font-size: 20px; font-weight: bold; color: var(--verde); }
+        .opcao.selecionada { border-color: var(--verde); background: #eafaf1; }
+        .opcao img { width: 100%; height: 85px; object-fit: cover; border-radius: 6px; margin-bottom: 6px; }
+        .opcao h3 { font-size: 14px; margin-bottom: 3px; }
+        .opcao p { font-size: 11px; color: #666; margin-bottom: 4px; }
+        .preco { font-size: 15px; font-weight: bold; color: var(--verde); }
         
-        .resumo { 
-            background: #fff; 
-            padding: 25px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .resumo h3 { margin-bottom: 15px; font-size: 20px; color: var(--escuro); }
-        .resumo-item { padding: 6px 0; border-bottom: 1px dashed #ddd; }
-        .resumo-total { font-size: 22px; font-weight: bold; color: var(--verde); margin-top: 12px; }
-        .vazio { color: #999; font-style: italic; }
+        .secao { margin-top: 15px; background: #fff; padding: 12px; border-radius: 10px; }
+        .secao h3 { font-size: 14px; margin-bottom: 8px; border-bottom: 2px solid var(--dourado); padding-bottom: 4px; }
         
-        .btn-pedir { 
-            display: block; 
-            background: var(--verde); 
-            color: #fff; 
-            text-align: center; 
-            padding: 15px; 
-            border-radius: 10px; 
-            text-decoration: none; 
-            font-size: 18px; 
-            font-weight: bold; 
-            margin-top: 20px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.2s;
-        }
-        .btn-pedir:hover { transform: scale(1.02); }
-        .btn-pedir:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+        .resumo { background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        @media (min-width: 769px) { .resumo { position: sticky; top: 85px; } }
+        .resumo h3 { margin-bottom: 10px; font-size: 15px; color: var(--escuro); }
+        .resumo-item { padding: 4px 0; border-bottom: 1px dashed #ddd; font-size: 13px; }
+        .resumo-total { font-size: 17px; font-weight: bold; color: var(--verde); margin-top: 8px; }
+        .vazio { color: #999; font-style: italic; font-size: 13px; }
         
-        footer { background: var(--escuro); color: #fff; padding: 30px 5%; text-align: center; margin-top: 50px; }
+        .btn-pedir { display: block; background: var(--verde); color: #fff; text-align: center; padding: 10px; border-radius: 8px; font-size: 15px; font-weight: bold; margin-top: 12px; border: none; cursor: pointer; width: 100%; }
+        .btn-pedir:disabled { background: #aaa; cursor: not-allowed; }
+        
+        footer { background: var(--escuro); color: #fff; padding: 15px 5%; text-align: center; margin-top: 15px; font-size: 13px; grid-column: 1 / -1; }
         footer a { color: var(--dourado); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="index.html" class="logo">← Refúgio da Comida</a>
+    <a href="index.html" class="logo">REFÚGIO DA COMIDA</a>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="economica.html">Econômica</a>
+        <a href="monte-sua-marmita.html">Monte Sua Marmita</a>
+        <a href="frango.html">Frango</a>
+        <a href="carne.html">Carne</a>
+        <a href="especiais.html">Especiais</a>
+        <a href="bebidas-sobremesas.html">Bebidas</a>
+    </nav>
     <a href="https://wa.me/5511966620625" target="_blank" class="btn-whats">📲 (11) 96662-0625</a>
 </header>
 
 <main>
-    <a href="index.html" class="voltar">← Voltar ao Cardápio</a>
-    
     <h1>🍗 MARMITAS DE FRANGO</h1>
-    <p class="subtitulo">Clique na marmita que deseja pedir</p>
+    <p class="subtitulo">Todas completas com arroz, feijão, salada e batata</p>
 
-    <img class="foto-destaque" src="https://images.unsplash.com/photo-1604908176952-020f88043f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Marmitas de Frango">
+    <div class="coluna-escolhas">
+        <div class="opcoes" id="pratos">
+            <div class="opcao" data-nome="Frango Grelhado" data-desc="Arroz, feijão, salada e batata frita" data-valor="24">
+                <img src="https://images.unsplash.com/photo-1532550907401-a82d1eb47fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Frango Grelhado">
+                <h3>Frango Grelhado</h3>
+                <p>Com batata frita</p>
+                <div class="preco">R$ 24,00</div>
+            </div>
 
-    <div class="opcoes" id="produtos">
-        <div class="opcao" data-valor="Frango Grelhado" data-preco="24">
-            <h3>01. Frango Grelhado</h3>
-            <p>Arroz + feijão + frango grelhado + acompanhamento + salada</p>
-            <div class="preco">R$ 24,00</div>
+            <div class="opcao" data-nome="Frango Acebolado" data-desc="Arroz, feijão, salada e purê de batata" data-valor="24">
+                <img src="https://images.unsplash.com/photo-1604908176952-020f88043f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Frango Acebolado">
+                <h3>Frango Acebolado</h3>
+                <p>Com purê</p>
+                <div class="preco">R$ 24,00</div>
+            </div>
+
+            <div class="opcao" data-nome="Frango à Milanesa" data-desc="Arroz, feijão, salada e batata frita" data-valor="26">
+                <img src="https://images.unsplash.com/photo-1626204041616-4d9b30d5a04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Frango à Milanesa">
+                <h3>Frango à Milanesa</h3>
+                <p>Crocante</p>
+                <div class="preco">R$ 26,00</div>
+            </div>
+
+            <div class="opcao" data-nome="Frango à Parmegiana" data-desc="Arroz, feijão, salada e batata frita" data-valor="27">
+                <img src="https://images.unsplash.com/photo-1633134116335-4b4e9006f1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Frango à Parmegiana">
+                <h3>Frango à Parmegiana</h3>
+                <p>Com queijo e molho</p>
+                <div class="preco">R$ 27,00</div>
+            </div>
+
+            <div class="opcao" data-nome="Frango com Legumes" data-desc="Arroz, feijão, salada e farofa" data-valor="24">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Frango com Legumes">
+                <h3>Frango com Legumes</h3>
+                <p>Leve e saboroso</p>
+                <div class="preco">R$ 24,00</div>
+            </div>
         </div>
 
-        <div class="opcao" data-valor="Frango Acebolado" data-preco="24">
-            <h3>02. Frango Acebolado</h3>
-            <p>Arroz + feijão + frango acebolado + farofa + salada</p>
-            <div class="preco">R$ 24,00</div>
+        <div class="secao">
+            <h3>🥤 Bebidas</h3>
+            <div class="opcoes" id="bebidas" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="opcao" data-item="Água" data-valor="3">Água<br>R$3</div>
+                <div class="opcao" data-item="Refrigerante Lata" data-valor="6">Refrigerante<br>R$6</div>
+                <div class="opcao" data-item="Suco Natural" data-valor="7">Suco<br>R$7</div>
+            </div>
         </div>
 
-        <div class="opcao" data-valor="Frango à Milanesa" data-preco="26">
-            <h3>03. Frango à Milanesa</h3>
-            <p>Arroz + feijão + frango à milanesa + purê + salada</p>
-            <div class="preco">R$ 26,00</div>
-        </div>
-
-        <div class="opcao" data-valor="Strogonoff de Frango" data-preco="27">
-            <h3>04. Strogonoff de Frango</h3>
-            <p>Arroz + strogonoff de frango + batata palha + salada</p>
-            <div class="preco">R$ 27,00</div>
-        </div>
-
-        <div class="opcao" data-valor="Frango à Parmegiana" data-preco="29">
-            <h3>05. Frango à Parmegiana</h3>
-            <p>Arroz + feijão + frango à parmegiana + purê + salada</p>
-            <div class="preco">R$ 29,00</div>
+        <div class="secao">
+            <h3>🍮 Sobremesas</h3>
+            <div class="opcoes" id="sobremesas" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="opcao" data-item="Pudim" data-valor="7">Pudim<br>R$7</div>
+                <div class="opcao" data-item="Mousse" data-valor="6">Mousse<br>R$6</div>
+                <div class="opcao" data-item="Sobremesa do Dia" data-valor="7">Do Dia<br>R$7</div>
+            </div>
         </div>
     </div>
 
     <div class="resumo">
         <h3>📋 Seu Pedido</h3>
-        <div id="resumo-conteudo">
-            <p class="vazio">Selecione uma marmita acima...</p>
-        </div>
-        <div class="resumo-total">Total: <span id="valor-total">R$ 0,00</span></div>
-        <button id="btn-enviar" class="btn-pedir" disabled>💬 Enviar Pedido pelo WhatsApp</button>
+        <div id="resumo-conteudo"><p class="vazio">Escolha uma marmita...</p></div>
+        <div class="resumo-total">Total: R$ <span id="valor-total">0,00</span></div>
+        <button id="btn-pedir" class="btn-pedir" disabled>💬 Enviar pelo WhatsApp</button>
     </div>
 </main>
 
 <footer>
-    <p>📲 WhatsApp: <a href="https://wa.me/5511966620625">(11) 96662-0625</a></p>
-    <p>🕒 Segunda a Sábado das 10h às 22h</p>
+    <p>📲 WhatsApp: <a href="https://wa.me/5511966620625">(11) 96662-0625</a> | 🚚 Entrega disponível</p>
 </footer>
 
 <script>
-    let pedido = null;
-
-    const elProdutos = document.getElementById('produtos');
+    const pedido = { prato: null, bebidas: [], sobremesas: [] };
+    const elPratos = document.getElementById('pratos');
+    const elBebidas = document.getElementById('bebidas');
+    const elSobremesas = document.getElementById('sobremesas');
     const elResumo = document.getElementById('resumo-conteudo');
     const elTotal = document.getElementById('valor-total');
-    const elBtn = document.getElementById('btn-enviar');
+    const elBtn = document.getElementById('btn-pedir');
 
-    elProdutos.addEventListener('click', (e) => {
+    elPratos.addEventListener('click', (e) => {
         const card = e.target.closest('.opcao');
         if (!card) return;
-
-        elProdutos.querySelectorAll('.opcao').forEach(i => i.classList.remove('selecionada'));
+        elPratos.querySelectorAll('.opcao').forEach(i => i.classList.remove('selecionada'));
         card.classList.add('selecionada');
-
-        pedido = {
-            nome: card.dataset.valor,
-            preco: parseFloat(card.dataset.preco)
+        pedido.prato = {
+            nome: card.dataset.nome,
+            desc: card.dataset.desc,
+            valor: parseFloat(card.dataset.valor)
         };
-
-        elResumo.innerHTML = `<div class="resumo-item"><strong>🍗 Marmita:</strong> ${pedido.nome}</div>`;
-        elTotal.textContent = `R$ ${pedido.preco.toFixed(2).replace('.', ',')}`;
-        elBtn.disabled = false;
+        atualizar();
     });
 
+    function multi(elemento, lista) {
+        elemento.addEventListener('click', (e) => {
+            const card = e.target.closest('.opcao');
+            if (!card) return;
+            const item = { nome: card.dataset.item, valor: parseFloat(card.dataset.valor) };
+            const idx = pedido[lista].findIndex(i => i.nome === item.nome);
+            idx > -1 ? pedido[lista].splice(idx, 1) : pedido[lista].push(item);
+            card.classList.toggle('selecionada');
+            atualizar();
+        });
+    }
+    multi(elBebidas, 'bebidas');
+    multi(elSobremesas, 'sobremesas');
+
+    function atualizar() {
+        let html = '', total = 0;
+        if (pedido.prato) {
+            total += pedido.prato.valor;
+            html += `<div class="resumo-item"><strong>${pedido.prato.nome}</strong><br>${pedido.prato.desc}</div>`;
+        }
+        if (pedido.bebidas.length) {
+            html += `<div class="resumo-item"><strong>🥤 Bebidas:</strong><br>`;
+            pedido.bebidas.forEach(i => { html += `• ${i.nome} — R$ ${i.valor.toFixed(2).replace('.',',')}<br>`; total += i.valor; });
+            html += `</div>`;
+        }
+        if (pedido.sobremesas.length) {
+            html += `<div class="resumo-item"><strong>🍮 Sobremesas:</strong><br>`;
+            pedido.sobremesas.forEach(i => { html += `• ${i.nome} — R$ ${i.valor.toFixed(2).replace('.',',')}<br>`; total += i.valor; });
+            html += `</div>`;
+        }
+        if (!pedido.prato) html = '<p class="vazio">Escolha uma marmita...</p>';
+        elResumo.innerHTML = html;
+        elTotal.textContent = total.toFixed(2).replace('.', ',');
+        elBtn.disabled = !pedido.prato;
+    }
+
     elBtn.addEventListener('click', () => {
-        if (!pedido) return;
-
-        let mensagem = `🍗 PEDIDO — MARMITA DE FRANGO\n\n`;
-        mensagem += `Marmita: ${pedido.nome}\n`;
-        mensagem += `Total: R$ ${pedido.preco.toFixed(2).replace('.', ',')}\n`;
-        mensagem += `\nPor favor, me informem o valor da entrega e a forma de pagamento. Obrigado!`;
-
-        const url = `https://wa.me/5511966620625?text=${encodeURIComponent(mensagem)}`;
-        window.open(url, '_blank');
+        let msg = `🍗 PEDIDO — MARMITAS DE FRANGO\n\nPrato: ${pedido.prato.nome}\n`;
+        if (pedido.bebidas.length) { msg += `\n🥤 Bebidas:\n`; pedido.bebidas.forEach(i => msg += `• ${i.nome}\n`); }
+        if (pedido.sobremesas.length) { msg += `\n🍮 Sobremesas:\n`; pedido.sobremesas.forEach(i => msg += `• ${i.nome}\n`); }
+        let total = pedido.prato.valor;
+        pedido.bebidas.forEach(i => total += i.valor);
+        pedido.sobremesas.forEach(i => total += i.valor);
+        msg += `\n💰 Total: R$ ${total.toFixed(2).replace('.', ',')}\nEntrega e forma de pagamento? Obrigado!`;
+        window.open(`https://wa.me/5511966620625?text=${encodeURIComponent(msg)}`, '_blank');
     });
 </script>
 
