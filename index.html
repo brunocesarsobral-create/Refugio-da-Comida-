@@ -3,147 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refúgio da Comida</title>
+    <title>Refúgio da Comida - Comida caseira, sabor que abraça</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body {
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), url('https://images.unsplash.com/photo-1546069901-b273219e6a56?w=1200') center/cover no-repeat;
-            color: #fff;
-            min-height: 100vh;
-            padding-bottom: 40px;
+        :root {
+            --dourado: #f5c500;
+            --verde: #25c052;
+            --marrom: #2b1e10;
+            --bege: #fff8e8;
+            --escuro: #1a1208;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .logo { font-size: 24px; font-weight: bold; color: #ffcc00; }
-        .whats-top {
-            background: #25d366;
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        .hero {
-            text-align: center;
-            padding: 40px 20px 30px;
-        }
-        .hero h1 { font-size: 42px; color: #ffcc00; margin-bottom: 12px; }
-        .hero p { font-size: 18px; color: #ddd; margin-bottom: 15px; line-height: 1.6; }
-        .aviso {
-            font-size: 13px;
-            color: #ffcc00;
-            font-style: italic;
-            margin-bottom: 10px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
-        }
-        .cardapio {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            padding: 20px 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .categoria-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 35px 25px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            text-decoration: none;
-            color: #fff;
-        }
-        .categoria-card:hover {
-            border-color: #ffcc00;
-            transform: translateY(-5px);
-            background: rgba(255,204,0,0.1);
-        }
-        .categoria-icone { font-size: 50px; margin-bottom: 15px; }
-        .categoria-nome { font-size: 20px; font-weight: bold; color: #ffcc00; margin-bottom: 10px; line-height: 1.4; }
-        .categoria-desc { font-size: 14px; color: #bbb; margin-bottom: 15px; line-height: 1.5; }
-        .categoria-preco { font-size: 19px; color: #25d366; font-weight: bold; }
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 14px;
-            color: #888;
-            border-top: 1px solid #ffffff15;
-            margin-top: 30px;
-            line-height: 1.8;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .cardapio { grid-template-columns: 1fr; padding: 20px 15px; }
-            header { padding: 15px; }
-        }
+        body { background-color: var(--bege); color: var(--marrom); line-height: 1.6; }
+        
+        /* Cabeçalho */
+        header { background: var(--escuro); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { color: var(--dourado); font-size: 24px; font-weight: bold; }
+        .logo span { display: block; font-size: 12px; color: #fff; font-weight: normal; }
+        nav a { color: #fff; margin: 0 12px; text-decoration: none; font-size: 15px; }
+        .btn-whats { background: var(--verde); color: #fff; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/marmita-destaque.jpg'); background-size: cover; background-position: center; padding: 80px 5%; text-align: center; color: #fff; }
+        .hero h1 { font-size: 48px; margin-bottom: 10px; }
+        .hero h2 { font-size: 20px; font-weight: normal; margin-bottom: 30px; }
+        .preco-destaque { font-size: 32px; background: var(--dourado); color: var(--escuro); display: inline-block; padding: 10px 30px; border-radius: 8px; font-weight: bold; margin-bottom: 25px; }
+        .btn-grande { background: var(--verde); color: #fff; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-size: 18px; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; }
+        
+        /* Cardápio */
+        .cardapio { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+        .cardapio h2 { text-align: center; font-size: 32px; margin-bottom: 10px; color: var(--escuro); }
+        .subtitulo { text-align: center; margin-bottom: 40px; color: #666; }
+        .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; text-decoration: none; color: inherit; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card-conteudo { padding: 20px; }
+        .card h3 { font-size: 18px; margin-bottom: 10px; color: var(--escuro); }
+        .card p { color: #666; font-size: 14px; margin-bottom: 15px; }
+        .card-preco { font-size: 22px; font-weight: bold; color: var(--verde); }
+        
+        /* Informações */
+        .info { padding: 50px 5%; background: #fff; }
+        .info-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .info-item { text-align: center; }
+        .info-item h3 { margin: 15px 0; font-size: 18px; }
+        
+        /* Rodapé */
+        footer { background: var(--escuro); color: #fff; padding: 40px 5%; text-align: center; margin-top: 40px; }
+        footer p { margin: 10px 0; }
+        footer a { color: var(--dourado); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
+<!-- Cabeçalho -->
 <header>
-    <div class="logo">🍽️ Refúgio da Comida</div>
-    <a href="https://wa.me/5511966620625?text=Olá! Gostaria de fazer um pedido." class="whats-top" target="_blank">📱 Pedir pelo WhatsApp</a>
+    <div class="logo">
+        REFÚGIO DA COMIDA
+        <span>Comida caseira, sabor que abraça</span>
+    </div>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="como-pedir.html">Como Pedir</a>
+        <a href="sobre.html">Sobre Nós</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+    <a href="https://wa.me/5511966620625" target="_blank" class="btn-whats">
+        📲 Pedir pelo WhatsApp
+    </a>
 </header>
 
+<!-- Destaque Principal -->
 <section class="hero">
     <h1>REFÚGIO DA COMIDA</h1>
-    <p>Comida caseira, sabor que abraça.<br>Escolha sua categoria abaixo!</p>
-    <p class="aviso">*Valores sujeitos a alterações sem prévio aviso, conforme variação do mercado</p>
+    <h2>Comida caseira, sabor que abraça!</h2>
+    <div class="preco-destaque">Marmitas a partir de R$ 22,00</div>
+    <br>
+    <a href="https://wa.me/5511966620625" target="_blank" class="btn-grande">
+        💬 PEDIR PELO WHATSAPP
+    </a>
 </section>
 
+<!-- Cardápio -->
 <section class="cardapio">
-    <a href="frango.html" class="categoria-card">
-        <div class="categoria-icone">🍗</div>
-        <div class="categoria-nome">Marmitas de Frango</div>
-        <div class="categoria-desc">Filé grelhado, empanado, à parmegiana e mais opções</div>
-        <div class="categoria-preco">A partir de R$ 22,00</div>
-    </a>
+    <h2>Nosso Cardápio</h2>
+    <p class="subtitulo">Refeições balanceadas, saborosas e feitas com ingredientes de qualidade.</p>
+    
+    <div class="grade">
+        <!-- Econômica -->
+        <a href="economica.html" class="card">
+            <img src="img/marmita-caseira.jpg" alt="Marmita Caseira">
+            <div class="card-conteudo">
+                <h3>💰 Marmita Econômica</h3>
+                <p>Arroz + feijão + proteína do dia + acompanhamento + salada</p>
+                <div class="card-preco">R$ 22,00</div>
+            </div>
+        </a>
 
-    <a href="carne.html" class="categoria-card">
-        <div class="categoria-icone">🥩</div>
-        <div class="categoria-nome">Marmitas de Carne</div>
-        <div class="categoria-desc">Bisteca, contra filé, picanha, bife, calabresa e mais</div>
-        <div class="categoria-preco">A partir de R$ 23,00</div>
-    </a>
+        <!-- Monte Sua Marmita -->
+        <a href="monte-sua-marmita.html" class="card">
+            <img src="img/monte-sua.jpg" alt="Monte Sua Marmita">
+            <div class="card-conteudo">
+                <h3>⭐ Monte Sua Marmita</h3>
+                <p>Você escolhe proteína, acompanhamentos e salada do seu jeito!</p>
+                <div class="card-preco">R$ 27,00</div>
+            </div>
+        </a>
 
-    <a href="peixe.html" class="categoria-card">
-        <div class="categoria-icone">🐟</div>
-        <div class="categoria-nome">Peixes & Parmegianas</div>
-        <div class="categoria-desc">Merluza, tilápia, peixe à parmegiana com fritas</div>
-        <div class="categoria-preco">A partir de R$ 24,00</div>
-    </a>
+        <!-- Frango -->
+        <a href="frango.html" class="card">
+            <img src="img/marmita-frango.jpg" alt="Marmitas de Frango">
+            <div class="card-conteudo">
+                <h3>🍗 Marmitas de Frango</h3>
+                <p>Grelhado, acebolado, à milanesa, strogonoff, à parmegiana</p>
+                <div class="card-preco">A partir de R$ 24,00</div>
+            </div>
+        </a>
 
-    <a href="lanches.html" class="categoria-card">
-        <div class="categoria-icone">🍔</div>
-        <div class="categoria-nome">Lanches</div>
-        <div class="categoria-desc">X Salada, X Bacon, X Tudo, X Egg e X Burger</div>
-        <div class="categoria-preco">A partir de R$ 9,00</div>
-    </a>
+        <!-- Carne -->
+        <a href="carne.html" class="card">
+            <img src="img/marmita-carne.jpg" alt="Marmitas de Carne">
+            <div class="card-conteudo">
+                <h3>🥩 Marmitas de Carne</h3>
+                <p>Moída, linguiça, bife, bife à milanesa, carne de panela</p>
+                <div class="card-preco">A partir de R$ 25,00</div>
+            </div>
+        </a>
 
-    <a href="bebidas.html" class="categoria-card">
-        <div class="categoria-icone">🥤</div>
-        <div class="categoria-nome">Bebidas</div>
-        <div class="categoria-desc">Sucos naturais, refrigerantes, água</div>
-        <div class="categoria-preco">A partir de R$ 3,00</div>
-    </a>
+        <!-- Especiais -->
+        <a href="especiais.html" class="card">
+            <img src="img/marmita-especial.jpg" alt="Marmitas Especiais">
+            <div class="card-conteudo">
+                <h3>⭐ Marmitas Especiais</h3>
+                <p>Parmegiana Especial e Especial da Casa</p>
+                <div class="card-preco">R$ 32,00</div>
+            </div>
+        </a>
+
+        <!-- Bebidas e Sobremesas -->
+        <a href="bebidas-sobremesas.html" class="card">
+            <img src="img/bebidas.jpg" alt="Bebidas e Sobremesas">
+            <div class="card-conteudo">
+                <h3>🥤 Bebidas & Sobremesas</h3>
+                <p>Água, refrigerante, suco, pudim, mousse e mais!</p>
+                <div class="card-preco">A partir de R$ 3,00</div>
+            </div>
+        </a>
+    </div>
 </section>
 
+<!-- Informações -->
+<section class="info">
+    <div class="info-container">
+        <div class="info-item">
+            <h3>📍 Área de Atendimento</h3>
+            <p>Consulte-nos sobre seu bairro!</p>
+        </div>
+        <div class="info-item">
+            <h3>🚚 Taxa de Entrega</h3>
+            <p>A partir de R$ 5,00<br>(conforme região)</p>
+        </div>
+        <div class="info-item">
+            <h3>🕒 Horário</h3>
+            <p>Segunda a Sábado<br>das 10h às 22h</p>
+        </div>
+        <div class="info-item">
+            <h3>💳 Pagamento</h3>
+            <p>Dinheiro • Pix<br>Débito • Crédito</p>
+        </div>
+    </div>
+</section>
+
+<!-- Rodapé -->
 <footer>
-    <p>📍 Entregamos em bairros selecionados — consulte-nos!</p>
-    <p>🕒 Segunda a Sábado das 11h às 15h</p>
-    <p>📞 (11) 96662-0625 — WhatsApp</p>
-    <p>© 2026 Refúgio da Comida — Comida caseira, sabor que abraça</p>
+    <h3 style="font-size: 24px; margin-bottom: 10px;">REFÚGIO DA COMIDA</h3>
+    <p>Comida caseira, sabor que abraça!</p>
+    <br>
+    <p>📲 Peça pelo WhatsApp: <a href="https://wa.me/5511966620625" target="_blank">(11) 96662-0625</a></p>
+    <p>🕒 Segunda a Sábado das 10h às 22h</p>
+    <br>
+    <p>© 2026 Refúgio da Comida — Todos os direitos reservados</p>
 </footer>
 
 </body>
