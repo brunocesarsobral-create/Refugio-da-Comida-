@@ -3,69 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marmitas Especiais - Refúgio da Comida</title>
+    <title>Pratos Especiais - Refúgio da Comida</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         :root { --dourado: #f5c500; --verde: #25c052; --marrom: #2b1e10; --bege: #fff8e8; --escuro: #1a1208; --cinza: #eee; }
-        body { background: var(--bege); color: var(--marrom); line-height: 1.8; }
-        header { background: var(--escuro); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { color: var(--dourado); font-size: 22px; font-weight: bold; text-decoration: none; }
-        .voltar { color: #fff; text-decoration: none; margin: 20px 0; display: inline-block; }
-        .btn-whats { background: var(--verde); color: #fff; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; }
-        main { max-width: 900px; margin: 0 auto; padding: 30px 5%; }
-        h1 { font-size: 30px; margin-bottom: 10px; color: var(--escuro); text-align: center; }
-        .subtitulo { text-align: center; margin-bottom: 25px; color: #666; }
-        .foto-destaque { width: 100%; border-radius: 12px; margin-bottom: 25px; object-fit: cover; height: 250px; }
+        body { background: var(--bege); color: var(--marrom); line-height: 1.5; padding-top: 70px; }
         
-        .opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        /* CABEÇALHO FIXO */
+        header { 
+            background: var(--escuro); 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .logo { color: var(--dourado); font-size: 18px; font-weight: bold; text-decoration: none; }
+        .voltar { color: #fff; text-decoration: none; font-size: 13px; }
+        .btn-whats { background: var(--verde); color: #fff; padding: 8px 14px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 13px; }
+        
+        main { max-width: 1000px; margin: 0 auto; padding: 20px 5%; display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+        @media (max-width: 768px) { main { grid-template-columns: 1fr; } }
+        
+        h1 { font-size: 24px; margin-bottom: 5px; color: var(--escuro); text-align: center; grid-column: 1 / -1; }
+        .subtitulo { text-align: center; margin-bottom: 15px; color: #666; font-size: 14px; grid-column: 1 / -1; }
+        
+        .opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
         .opcao { 
             background: #fff; 
-            padding: 20px; 
+            padding: 12px; 
             border: 2px solid var(--cinza); 
-            border-radius: 12px; 
+            border-radius: 10px; 
             cursor: pointer; 
             transition: all 0.2s;
+            text-align: center;
         }
         .opcao:hover { border-color: #ccc; }
-        .opcao.selecionada { 
-            border-color: var(--verde); 
-            background: #eafaf1; 
-        }
-        .opcao h3 { margin-bottom: 8px; font-size: 18px; }
-        .opcao p { color: #666; margin-bottom: 10px; }
-        .preco { font-size: 20px; font-weight: bold; color: var(--verde); }
+        .opcao.selecionada { border-color: var(--verde); background: #eafaf1; }
+        .opcao img { width: 100%; height: 100px; object-fit: cover; border-radius: 6px; margin-bottom: 8px; }
+        .opcao h3 { font-size: 15px; margin-bottom: 4px; }
+        .opcao p { font-size: 12px; color: #666; margin-bottom: 6px; }
+        .preco { font-size: 16px; font-weight: bold; color: var(--verde); }
         
         .resumo { 
             background: #fff; 
-            padding: 25px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 18px; 
+            border-radius: 10px; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
-        .resumo h3 { margin-bottom: 15px; font-size: 20px; color: var(--escuro); }
-        .resumo-item { padding: 6px 0; border-bottom: 1px dashed #ddd; }
-        .resumo-total { font-size: 22px; font-weight: bold; color: var(--verde); margin-top: 12px; }
-        .vazio { color: #999; font-style: italic; }
+        @media (min-width: 769px) { .resumo { position: sticky; top: 85px; } }
+        .resumo h3 { margin-bottom: 10px; font-size: 16px; color: var(--escuro); }
+        .resumo-item { padding: 4px 0; border-bottom: 1px dashed #ddd; font-size: 13px; }
+        .resumo-total { font-size: 18px; font-weight: bold; color: var(--verde); margin-top: 8px; }
+        .vazio { color: #999; font-style: italic; font-size: 13px; }
         
         .btn-pedir { 
             display: block; 
             background: var(--verde); 
             color: #fff; 
             text-align: center; 
-            padding: 15px; 
-            border-radius: 10px; 
-            text-decoration: none; 
-            font-size: 18px; 
+            padding: 12px; 
+            border-radius: 8px; 
+            font-size: 15px; 
             font-weight: bold; 
-            margin-top: 20px;
+            margin-top: 15px;
             border: none;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.2s;
         }
-        .btn-pedir:hover { transform: scale(1.02); }
-        .btn-pedir:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+        .btn-pedir:disabled { background: #aaa; cursor: not-allowed; }
         
-        footer { background: var(--escuro); color: #fff; padding: 30px 5%; text-align: center; margin-top: 50px; }
+        footer { background: var(--escuro); color: #fff; padding: 20px 5%; text-align: center; margin-top: 20px; font-size: 13px; grid-column: 1 / -1; }
         footer a { color: var(--dourado); text-decoration: none; font-weight: bold; }
     </style>
 </head>
@@ -73,89 +87,54 @@
 
 <header>
     <a href="index.html" class="logo">← Refúgio da Comida</a>
+    <nav>
+        <a href="index.html" class="voltar">← Voltar</a>
+    </nav>
     <a href="https://wa.me/5511966620625" target="_blank" class="btn-whats">📲 (11) 96662-0625</a>
 </header>
 
 <main>
-    <a href="index.html" class="voltar">← Voltar ao Cardápio</a>
-    
-    <h1>⭐ MARMITAS ESPECIAIS</h1>
-    <p class="subtitulo">Clique na opção que deseja pedir</p>
+    <h1>🍲 PRATOS ESPECIAIS</h1>
+    <p class="subtitulo">Escolha o seu prato e finalize o pedido</p>
 
-    <img class="foto-destaque" src="https://images.unsplash.com/photo-1633134116335-4b4e9006f1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Marmitas Especiais">
+    <div class="coluna-escolhas">
+        <div class="opcoes" id="pratos">
+            <div class="opcao" data-nome="Feijoada" data-descricao="Feijoada completa com farofa, couve, arroz e torresmo" data-preco="45" data-preco2="70">
+                <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Feijoada">
+                <h3>🍲 Feijoada</h3>
+                <p>Completa com todos os acompanhamentos</p>
+                <div class="preco">1 pessoa: R$ 45,00 | 2 pessoas: R$ 70,00</div>
+            </div>
 
-    <div class="opcoes" id="produtos">
-        <div class="opcao" data-valor="Parmegiana Especial" data-preco="32">
-            <h3>11. Parmegiana Especial</h3>
-            <p>Arroz + feijão + proteína à parmegiana + batata frita + salada</p>
-            <div class="preco">R$ 32,00</div>
+            <div class="opcao" data-nome="Baião de Dois" data-descricao="Arroz, feijão, queijo, carne de sol e temperos especiais" data-preco="35" data-preco2="60">
+                <img src="https://images.unsplash.com/photo-1604908176952-020f88043f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Baião de Dois">
+                <h3>🍚 Baião de Dois</h3>
+                <p>Tradicional e saboroso</p>
+                <div class="preco">1 pessoa: R$ 35,00 | 2 pessoas: R$ 60,00</div>
+            </div>
+
+            <div class="opcao" data-nome="Carne Seca Desfiada" data-descricao="Carne seca desfiada com cuscuz e purê de batata" data-preco="35" data-preco2="0">
+                <img src="https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Carne Seca">
+                <h3>🥩 Carne Seca Desfiada</h3>
+                <p>Com cuscuz e purê de batata</p>
+                <div class="preco">R$ 35,00</div>
+            </div>
+
+            <div class="opcao" data-nome="Cuscuz Especial" data-descricao="Cuscuz recheado com carne, queijo e acompanhamentos" data-preco="32" data-preco2="0">
+                <img src="https://images.unsplash.com/photo-1623689036809-5d0a9f0d6c8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cuscuz Especial">
+                <h3>🌽 Cuscuz Especial</h3>
+                <p>Com carne, queijo e manteiga</p>
+                <div class="preco">R$ 32,00</div>
+            </div>
+
+            <div class="opcao" data-nome="Parmegiana Especial" data-descricao="Arroz, feijão, parmegiana, batata frita e salada" data-preco="32" data-preco2="0">
+                <img src="https://images.unsplash.com/photo-1633134116335-4b4e9006f1d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Parmegiana">
+                <h3>🧀 Parmegiana Especial</h3>
+                <p>Arroz, feijão, batata frita e salada</p>
+                <div class="preco">R$ 32,00</div>
+            </div>
         </div>
 
-        <div class="opcao" data-valor="Especial da Casa" data-preco="32">
-            <h3>12. Especial da Casa</h3>
-            <p>Arroz + feijão + proteína especial + 2 acompanhamentos + salada</p>
-            <div class="preco">R$ 32,00</div>
-        </div>
-
-        <div class="opcao" data-valor="Marmita Caseira" data-preco="22">
-            <h3>13. Marmita Caseira</h3>
-            <p>Arroz + feijão + proteína do dia + acompanhamento + salada</p>
-            <div class="preco">R$ 22,00</div>
-        </div>
-    </div>
-
-    <div class="resumo">
-        <h3>📋 Seu Pedido</h3>
-        <div id="resumo-conteudo">
-            <p class="vazio">Selecione uma opção acima...</p>
-        </div>
-        <div class="resumo-total">Total: <span id="valor-total">R$ 0,00</span></div>
-        <button id="btn-enviar" class="btn-pedir" disabled>💬 Enviar Pedido pelo WhatsApp</button>
-    </div>
-</main>
-
-<footer>
-    <p>📲 WhatsApp: <a href="https://wa.me/5511966620625">(11) 96662-0625</a></p>
-    <p>🕒 Segunda a Sábado das 10h às 22h</p>
-</footer>
-
-<script>
-    let pedido = null;
-
-    const elProdutos = document.getElementById('produtos');
-    const elResumo = document.getElementById('resumo-conteudo');
-    const elTotal = document.getElementById('valor-total');
-    const elBtn = document.getElementById('btn-enviar');
-
-    elProdutos.addEventListener('click', (e) => {
-        const card = e.target.closest('.opcao');
-        if (!card) return;
-
-        elProdutos.querySelectorAll('.opcao').forEach(i => i.classList.remove('selecionada'));
-        card.classList.add('selecionada');
-
-        pedido = {
-            nome: card.dataset.valor,
-            preco: parseFloat(card.dataset.preco)
-        };
-
-        elResumo.innerHTML = `<div class="resumo-item"><strong>⭐ Especial:</strong> ${pedido.nome}</div>`;
-        elTotal.textContent = `R$ ${pedido.preco.toFixed(2).replace('.', ',')}`;
-        elBtn.disabled = false;
-    });
-
-    elBtn.addEventListener('click', () => {
-        if (!pedido) return;
-
-        let mensagem = `⭐ PEDIDO — MARMITA ESPECIAL\n\n`;
-        mensagem += `Opção: ${pedido.nome}\n`;
-        mensagem += `Total: R$ ${pedido.preco.toFixed(2).replace('.', ',')}\n`;
-        mensagem += `\nPor favor, me informem o valor da entrega e a forma de pagamento. Obrigado!`;
-
-        const url = `https://wa.me/5511966620625?text=${encodeURIComponent(mensagem)}`;
-        window.open(url, '_blank');
-    });
-</script>
-
-</body>
-</html>
+        <!-- BEBIDAS E SOBREMESAS -->
+        <div class="secao" style="margin-top: 20px; background: #fff; padding: 15px; border-radius: 10px;">
+            <h3 style="font-size: 15px; margin-bottom: 10px; border-bottom: 2px solid var(--dourado); padding-bottom:

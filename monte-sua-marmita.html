@@ -7,28 +7,48 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         :root { --dourado: #f5c500; --verde: #25c052; --marrom: #2b1e10; --bege: #fff8e8; --escuro: #1a1208; --cinza: #eee; }
-        body { background: var(--bege); color: var(--marrom); line-height: 1.8; }
-        header { background: var(--escuro); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { color: var(--dourado); font-size: 22px; font-weight: bold; text-decoration: none; }
-        .voltar { color: #fff; text-decoration: none; margin: 20px 0; display: inline-block; }
-        .btn-whats { background: var(--verde); color: #fff; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; }
-        main { max-width: 900px; margin: 0 auto; padding: 30px 5%; }
-        h1 { font-size: 30px; margin-bottom: 10px; color: var(--escuro); text-align: center; }
-        .subtitulo { text-align: center; margin-bottom: 25px; color: #666; }
-        .preco-destaque { font-size: 26px; color: var(--verde); font-weight: bold; text-align: center; margin-bottom: 30px; }
+        body { background: var(--bege); color: var(--marrom); line-height: 1.5; padding-top: 70px; }
         
-        .secao { margin-bottom: 30px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        .secao h2 { font-size: 19px; margin-bottom: 18px; border-bottom: 2px solid var(--dourado); padding-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .aviso { font-size: 14px; color: #e67e22; font-weight: normal; }
+        /* CABEÇALHO FIXO */
+        header { 
+            background: var(--escuro); 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .logo { color: var(--dourado); font-size: 18px; font-weight: bold; text-decoration: none; }
+        .voltar { color: #fff; text-decoration: none; font-size: 13px; }
+        .btn-whats { background: var(--verde); color: #fff; padding: 8px 14px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 13px; }
         
-        .opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        main { max-width: 1100px; margin: 0 auto; padding: 20px 5%; display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+        @media (max-width: 768px) { main { grid-template-columns: 1fr; } }
+        
+        h1 { font-size: 24px; margin-bottom: 5px; color: var(--escuro); text-align: center; grid-column: 1 / -1; }
+        .subtitulo { text-align: center; margin-bottom: 15px; color: #666; font-size: 14px; grid-column: 1 / -1; }
+        .preco-destaque { font-size: 20px; color: var(--verde); font-weight: bold; text-align: center; margin-bottom: 15px; grid-column: 1 / -1; }
+        
+        .secao { margin-bottom: 18px; background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+        .secao h2 { font-size: 15px; margin-bottom: 10px; border-bottom: 2px solid var(--dourado); padding-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .aviso { font-size: 12px; color: #e67e22; font-weight: normal; }
+        
+        .opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 6px; }
         .opcao { 
-            padding: 12px 15px; 
+            padding: 8px 10px; 
             border: 2px solid var(--cinza); 
-            border-radius: 8px; 
+            border-radius: 6px; 
             cursor: pointer; 
             transition: all 0.2s;
             background: #fff;
+            font-size: 13px;
+            text-align: center;
         }
         .opcao:hover { border-color: #ccc; }
         .opcao.selecionada { 
@@ -37,31 +57,31 @@
             font-weight: 600;
         }
         
+        /* RESUMO FIXO NA LATERAL */
+        .coluna-resumo { position: relative; }
+        @media (min-width: 769px) { .resumo { position: sticky; top: 85px; } }
         .resumo { 
             background: #fff; 
-            padding: 25px; 
-            border-radius: 12px; 
-            margin-top: 30px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: sticky;
-            bottom: 20px;
+            padding: 18px; 
+            border-radius: 10px; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
-        .resumo h3 { margin-bottom: 15px; font-size: 20px; color: var(--escuro); }
-        .resumo-item { padding: 6px 0; border-bottom: 1px dashed #ddd; }
-        .resumo-total { font-size: 22px; font-weight: bold; color: var(--verde); margin-top: 12px; }
-        .vazio { color: #999; font-style: italic; }
+        .resumo h3 { margin-bottom: 10px; font-size: 16px; color: var(--escuro); }
+        .resumo-item { padding: 4px 0; border-bottom: 1px dashed #ddd; font-size: 13px; }
+        .resumo-total { font-size: 18px; font-weight: bold; color: var(--verde); margin-top: 8px; }
+        .vazio { color: #999; font-style: italic; font-size: 13px; }
         
         .btn-pedir { 
             display: block; 
             background: var(--verde); 
             color: #fff; 
             text-align: center; 
-            padding: 15px; 
-            border-radius: 10px; 
+            padding: 12px; 
+            border-radius: 8px; 
             text-decoration: none; 
-            font-size: 18px; 
+            font-size: 15px; 
             font-weight: bold; 
-            margin-top: 20px;
+            margin-top: 15px;
             border: none;
             cursor: pointer;
             width: 100%;
@@ -70,7 +90,7 @@
         .btn-pedir:hover { transform: scale(1.02); }
         .btn-pedir:disabled { background: #aaa; cursor: not-allowed; transform: none; }
         
-        footer { background: var(--escuro); color: #fff; padding: 30px 5%; text-align: center; margin-top: 50px; }
+        footer { background: var(--escuro); color: #fff; padding: 20px 5%; text-align: center; margin-top: 20px; font-size: 13px; grid-column: 1 / -1; }
         footer a { color: var(--dourado); text-decoration: none; font-weight: bold; }
     </style>
 </head>
@@ -78,93 +98,125 @@
 
 <header>
     <a href="index.html" class="logo">← Refúgio da Comida</a>
+    <nav>
+        <a href="index.html" class="voltar">← Voltar</a>
+    </nav>
     <a href="https://wa.me/5511966620625" target="_blank" class="btn-whats">📲 (11) 96662-0625</a>
 </header>
 
 <main>
-    <a href="index.html" class="voltar">← Voltar ao Cardápio</a>
-    
-    <h1>⭐ MONTE SUA MARMITA</h1>
-    <p class="subtitulo">Clique nas opções abaixo para montar do seu jeito!</p>
-    <div class="preco-destaque">R$ 27,00</div>
+    <h1>⭐ MONTE SUA MARMITA COMPLETA</h1>
+    <p class="subtitulo">Escolha tudo e envie o pedido de uma vez só!</p>
+    <div class="preco-destaque">Marmita: R$ 27,00 + Bebidas e Sobremesas opcionais</div>
 
-    <!-- PROTEÍNA -->
-    <div class="secao">
-        <h2>🍗 Escolho 1 Proteína <span class="aviso" id="aviso-proteina"></span></h2>
-        <div class="opcoes" id="proteina">
-            <div class="opcao" data-valor="Frango grelhado">Frango grelhado</div>
-            <div class="opcao" data-valor="Frango acebolado">Frango acebolado</div>
-            <div class="opcao" data-valor="Frango à milanesa">Frango à milanesa</div>
-            <div class="opcao" data-valor="Frango à parmegiana">Frango à parmegiana</div>
-            <div class="opcao" data-valor="Carne moída">Carne moída</div>
-            <div class="opcao" data-valor="Linguiça acebolada">Linguiça acebolada</div>
-            <div class="opcao" data-valor="Bife acebolado">Bife acebolado</div>
-            <div class="opcao" data-valor="Carne de panela">Carne de panela</div>
+    <div class="coluna-escolhas">
+        <!-- PROTEÍNA -->
+        <div class="secao">
+            <h2>🍗 1 Proteína <span class="aviso" id="aviso-proteina"></span></h2>
+            <div class="opcoes" id="proteina">
+                <div class="opcao" data-valor="Frango grelhado">Frango grelhado</div>
+                <div class="opcao" data-valor="Frango acebolado">Frango acebolado</div>
+                <div class="opcao" data-valor="Frango à milanesa">Frango à milanesa</div>
+                <div class="opcao" data-valor="Frango à parmegiana">Frango à parmegiana</div>
+                <div class="opcao" data-valor="Carne moída">Carne moída</div>
+                <div class="opcao" data-valor="Linguiça acebolada">Linguiça acebolada</div>
+                <div class="opcao" data-valor="Bife acebolado">Bife acebolado</div>
+                <div class="opcao" data-valor="Carne de panela">Carne de panela</div>
+            </div>
+        </div>
+
+        <!-- ACOMPANHAMENTOS -->
+        <div class="secao">
+            <h2>🍚 2 Acompanhamentos <span class="aviso" id="aviso-acompanhamento"></span></h2>
+            <div class="opcoes" id="acompanhamento">
+                <div class="opcao" data-valor="Arroz branco">Arroz branco</div>
+                <div class="opcao" data-valor="Feijão">Feijão</div>
+                <div class="opcao" data-valor="Macarrão">Macarrão</div>
+                <div class="opcao" data-valor="Purê de batata">Purê de batata</div>
+                <div class="opcao" data-valor="Farofa">Farofa</div>
+                <div class="opcao" data-valor="Batata frita">Batata frita</div>
+                <div class="opcao" data-valor="Legumes refogados">Legumes refogados</div>
+            </div>
+        </div>
+
+        <!-- SALADA -->
+        <div class="secao">
+            <h2>🥗 1 Salada <span class="aviso" id="aviso-salada"></span></h2>
+            <div class="opcoes" id="salada">
+                <div class="opcao" data-valor="Alface e tomate">Alface e tomate</div>
+                <div class="opcao" data-valor="Repolho com cenoura">Repolho com cenoura</div>
+                <div class="opcao" data-valor="Beterraba">Beterraba</div>
+                <div class="opcao" data-valor="Vinagrete">Vinagrete</div>
+                <div class="opcao" data-valor="Maionese de legumes">Maionese de legumes</div>
+            </div>
+        </div>
+
+        <!-- ADICIONAIS DA MARMITA -->
+        <div class="secao">
+            <h2>➕ Adicionais da Marmita</h2>
+            <div class="opcoes" id="adicional">
+                <div class="opcao" data-valor="Proteína extra — R$ 10,00" data-preco="10">Proteína extra (+R$10)</div>
+                <div class="opcao" data-valor="Acompanhamento extra — R$ 4,00" data-preco="4">Acompanhamento extra (+R$4)</div>
+                <div class="opcao" data-valor="Batata frita extra — R$ 6,00" data-preco="6">Batata frita extra (+R$6)</div>
+            </div>
+        </div>
+
+        <!-- BEBIDAS INCLUÍDAS -->
+        <div class="secao">
+            <h2>🥤 Bebidas</h2>
+            <div class="opcoes" id="bebidas">
+                <div class="opcao" data-valor="Água" data-preco="3">Água — R$3</div>
+                <div class="opcao" data-valor="Refrigerante lata" data-preco="6">Refrigerante — R$6</div>
+                <div class="opcao" data-valor="Suco natural" data-preco="7">Suco natural — R$7</div>
+            </div>
+        </div>
+
+        <!-- SOBREMESAS INCLUÍDAS -->
+        <div class="secao">
+            <h2>🍮 Sobremesas</h2>
+            <div class="opcoes" id="sobremesas">
+                <div class="opcao" data-valor="Pudim" data-preco="7">Pudim — R$7</div>
+                <div class="opcao" data-valor="Mousse" data-preco="6">Mousse — R$6</div>
+                <div class="opcao" data-valor="Sobremesa do dia" data-preco="7">Do dia — R$7</div>
+            </div>
         </div>
     </div>
 
-    <!-- ACOMPANHAMENTOS -->
-    <div class="secao">
-        <h2>🍚 Escolha 2 Acompanhamentos <span class="aviso" id="aviso-acompanhamento"></span></h2>
-        <div class="opcoes" id="acompanhamento">
-            <div class="opcao" data-valor="Arroz branco">Arroz branco</div>
-            <div class="opcao" data-valor="Feijão">Feijão</div>
-            <div class="opcao" data-valor="Macarrão">Macarrão</div>
-            <div class="opcao" data-valor="Purê de batata">Purê de batata</div>
-            <div class="opcao" data-valor="Farofa">Farofa</div>
-            <div class="opcao" data-valor="Batata frita">Batata frita</div>
-            <div class="opcao" data-valor="Legumes refogados">Legumes refogados</div>
+    <!-- RESUMO FIXO NA LATERAL -->
+    <div class="coluna-resumo">
+        <div class="resumo">
+            <h3>📋 Seu Pedido</h3>
+            <div id="resumo-conteudo">
+                <p class="vazio">Selecione os itens...</p>
+            </div>
+            <div class="resumo-total">Total: <span id="valor-total">R$ 0,00</span></div>
+            <button id="btn-enviar" class="btn-pedir" disabled>💬 Enviar Pedido</button>
         </div>
-    </div>
-
-    <!-- SALADA -->
-    <div class="secao">
-        <h2>🥗 Escolha 1 Salada <span class="aviso" id="aviso-salada"></span></h2>
-        <div class="opcoes" id="salada">
-            <div class="opcao" data-valor="Alface e tomate">Alface e tomate</div>
-            <div class="opcao" data-valor="Repolho com cenoura">Repolho com cenoura</div>
-            <div class="opcao" data-valor="Beterraba">Beterraba</div>
-            <div class="opcao" data-valor="Vinagrete">Vinagrete</div>
-            <div class="opcao" data-valor="Maionese de legumes">Maionese de legumes</div>
-        </div>
-    </div>
-
-    <!-- ADICIONAIS -->
-    <div class="secao">
-        <h2>➕ Adicionais (opcional)</h2>
-        <div class="opcoes" id="adicional">
-            <div class="opcao" data-valor="Proteína extra — R$ 10,00" data-preco="10">Proteína extra — R$ 10,00</div>
-            <div class="opcao" data-valor="Acompanhamento extra — R$ 4,00" data-preco="4">Acompanhamento extra — R$ 4,00</div>
-            <div class="opcao" data-valor="Batata frita extra — R$ 6,00" data-preco="6">Batata frita extra — R$ 6,00</div>
-        </div>
-    </div>
-
-    <!-- RESUMO -->
-    <div class="resumo">
-        <h3>📋 Seu Pedido</h3>
-        <div id="resumo-conteudo">
-            <p class="vazio"> selecione os itens acima...</p>
-        </div>
-        <div class="resumo-total">Total: <span id="valor-total">R$ 27,00</span></div>
-        <button id="btn-enviar" class="btn-pedir" disabled>💬 Enviar Pedido pelo WhatsApp</button>
     </div>
 </main>
 
 <footer>
-    <p>📲 WhatsApp: 11966620625
+    <p>📲 WhatsApp: <a href="https://wa.me/5511966620625">(11) 96662-0625</a> | 🕒 Seg a Sáb 10h às 22h</p>
+</footer>
+
 <script>
     const pedido = {
         proteina: null,
         acompanhamento: [],
         salada: null,
         adicional: [],
+        bebidas: [],
+        sobremesas: [],
         valorBase: 27
     };
 
+    // Elementos
     const elProteina = document.getElementById('proteina');
     const elAcompanhamento = document.getElementById('acompanhamento');
     const elSalada = document.getElementById('salada');
     const elAdicional = document.getElementById('adicional');
+    const elBebidas = document.getElementById('bebidas');
+    const elSobremesas = document.getElementById('sobremesas');
     const elResumo = document.getElementById('resumo-conteudo');
     const elTotal = document.getElementById('valor-total');
     const elBtn = document.getElementById('btn-enviar');
@@ -173,6 +225,7 @@
     const avisoAcompanhamento = document.getElementById('aviso-acompanhamento');
     const avisoSalada = document.getElementById('aviso-salada');
 
+    // Seleção Única
     function selecaoUnica(elemento, chave, aviso) {
         elemento.addEventListener('click', (e) => {
             if (e.target.classList.contains('opcao')) {
@@ -189,11 +242,11 @@
     selecaoUnica(elProteina, 'proteina', avisoProteina);
     selecaoUnica(elSalada, 'salada', avisoSalada);
 
+    // Acompanhamentos — máximo 2
     elAcompanhamento.addEventListener('click', (e) => {
         if (e.target.classList.contains('opcao')) {
             const valor = e.target.dataset.valor;
             const index = pedido.acompanhamento.indexOf(valor);
-            
             if (index > -1) {
                 pedido.acompanhamento.splice(index, 1);
                 e.target.classList.remove('selecionada');
@@ -201,81 +254,87 @@
                 pedido.acompanhamento.push(valor);
                 e.target.classList.add('selecionada');
             } else {
-                alert('Você já escolheu 2 acompanhamentos!');
+                alert('Escolheu 2 acompanhamentos!');
             }
-            
-            avisoAcompanhamento.textContent = pedido.acompanhamento.length + '/2 selecionados';
+            avisoAcompanhamento.textContent = pedido.acompanhamento.length + '/2';
             avisoAcompanhamento.style.color = pedido.acompanhamento.length === 2 ? 'var(--verde)' : '#e67e22';
             atualizarResumo();
         }
     });
 
-    elAdicional.addEventListener('click', (e) => {
-        if (e.target.classList.contains('opcao')) {
-            const valor = e.target.dataset.valor;
-            const preco = parseFloat(e.target.dataset.preco);
-            const index = pedido.adicional.findIndex(a => a.valor === valor);
-            
-            if (index > -1) {
-                pedido.adicional.splice(index, 1);
-                e.target.classList.remove('selecionada');
-            } else {
-                pedido.adicional.push({ valor, preco });
-                e.target.classList.add('selecionada');
+    // Seleção Múltipla genérica
+    function selecaoMultipla(elemento, lista) {
+        elemento.addEventListener('click', (e) => {
+            if (e.target.classList.contains('opcao')) {
+                const valor = e.target.dataset.valor;
+                const preco = parseFloat(e.target.dataset.preco);
+                const index = pedido[lista].findIndex(i => i.valor === valor);
+                if (index > -1) {
+                    pedido[lista].splice(index, 1);
+                    e.target.classList.remove('selecionada');
+                } else {
+                    pedido[lista].push({ valor, preco });
+                    e.target.classList.add('selecionada');
+                }
+                atualizarResumo();
             }
-            atualizarResumo();
-        }
-    });
+        });
+    }
 
+    selecaoMultipla(elAdicional, 'adicional');
+    selecaoMultipla(elBebidas, 'bebidas');
+    selecaoMultipla(elSobremesas, 'sobremesas');
+
+    // Atualizar Resumo
     function atualizarResumo() {
         let html = '';
-        let valorTotal = pedido.valorBase;
+        let total = pedido.valorBase;
 
-        if (pedido.proteina) {
-            html += `<div class="resumo-item"><strong>🍗 Proteína:</strong> ${pedido.proteina}</div>`;
+        if (pedido.proteina) html += `<div class="resumo-item"><strong>🍗</strong> ${pedido.proteina}</div>`;
+        if (pedido.acompanhamento.length) html += `<div class="resumo-item"><strong>🍚</strong> ${pedido.acompanhamento.join(' + ')}</div>`;
+        if (pedido.salada) html += `<div class="resumo-item"><strong>🥗</strong> ${pedido.salada}</div>`;
+        
+        if (pedido.adicional.length) {
+            html += `<div class="resumo-item"><strong>➕</strong> ${pedido.adicional.map(i => i.valor).join(', ')}</div>`;
+            pedido.adicional.forEach(i => total += i.preco);
         }
-        if (pedido.acompanhamento.length > 0) {
-            html += `<div class="resumo-item"><strong>🍚 Acompanhamentos:</strong><br>• ${pedido.acompanhamento.join('<br>• ')}</div>`;
+        if (pedido.bebidas.length) {
+            html += `<div class="resumo-item"><strong>🥤</strong> ${pedido.bebidas.map(i => i.valor).join(', ')}</div>`;
+            pedido.bebidas.forEach(i => total += i.preco);
         }
-        if (pedido.salada) {
-            html += `<div class="resumo-item"><strong>🥗 Salada:</strong> ${pedido.salada}</div>`;
-        }
-        if (pedido.adicional.length > 0) {
-            html += `<div class="resumo-item"><strong>➕ Adicionais:</strong><br>• ${pedido.adicional.map(a => a.valor).join('<br>• ')}</div>`;
-            pedido.adicional.forEach(a => valorTotal += a.preco);
+        if (pedido.sobremesas.length) {
+            html += `<div class="resumo-item"><strong>🍮</strong> ${pedido.sobremesas.map(i => i.valor).join(', ')}</div>`;
+            pedido.sobremesas.forEach(i => total += i.preco);
         }
 
-        if (!html) {
-            html = '<p class="vazio">Selecione os itens acima...</p>';
-            elTotal.textContent = 'R$ 27,00';
-            elBtn.disabled = true;
-        } else {
-            elTotal.textContent = `R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
-            
-            const completo = pedido.proteina && pedido.acompanhamento.length === 2 && pedido.salada;
-            elBtn.disabled = !completo;
+        const completo = pedido.proteina && pedido.acompanhamento.length === 2 && pedido.salada;
+        
+        if (!html || !completo) {
+            html = '<p class="vazio">Escolha proteína, 2 acompanhamentos e salada...</p>' + (html && completo ? html : '');
         }
 
         elResumo.innerHTML = html;
+        elTotal.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        elBtn.disabled = !completo;
     }
 
+    // Enviar WhatsApp
     elBtn.addEventListener('click', () => {
-        let mensagem = `⭐ PEDIDO — MONTE SUA MARMITA\n\n`;
-        mensagem += `🍗 Proteína: ${pedido.proteina}\n`;
-        mensagem += `🍚 Acompanhamentos:\n• ${pedido.acompanhamento.join('\n• ')}\n`;
-        mensagem += `🥗 Salada: ${pedido.salada}\n`;
+        let msg = `⭐ PEDIDO — MONTE SUA MARMITA\n\n`;
+        msg += `🍗 Proteína: ${pedido.proteina}\n`;
+        msg += `🍚 Acompanhamentos: ${pedido.acompanhamento.join(' + ')}\n`;
+        msg += `🥗 Salada: ${pedido.salada}\n`;
         
-        if (pedido.adicional.length > 0) {
-            mensagem += `➕ Adicionais:\n• ${pedido.adicional.map(a => a.valor).join('\n• ')}\n`;
-        }
+        if (pedido.adicional.length) msg += `➕ Adicionais:\n• ${pedido.adicional.map(i => i.valor).join('\n• ')}\n`;
+        if (pedido.bebidas.length) msg += `🥤 Bebidas:\n• ${pedido.bebidas.map(i => i.valor).join('\n• ')}\n`;
+        if (pedido.sobremesas.length) msg += `🍮 Sobremesas:\n• ${pedido.sobremesas.map(i => i.valor).join('\n• ')}\n`;
         
-        let valorTotal = pedido.valorBase;
-        pedido.adicional.forEach(a => valorTotal += a.preco);
-        mensagem += `\n💰 Total: R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
-        mensagem += `\n\nPor favor, me informem o valor da entrega e a forma de pagamento. Obrigado!`;
+        let total = pedido.valorBase;
+        [pedido.adicional, pedido.bebidas, pedido.sobremesas].forEach(l => l.forEach(i => total += i.preco));
+        msg += `💰 Total: R$ ${total.toFixed(2).replace('.', ',')}\n`;
+        msg += `\nPor favor, me informem o valor da entrega e a forma de pagamento. Obrigado!`;
 
-        const url = `https://wa.me/5511966620625?text=${encodeURIComponent(mensagem)}`;
-        window.open(url, '_blank');
+        window.open(`https://wa.me/5511966620625?text=${encodeURIComponent(msg)}`, '_blank');
     });
 </script>
 
