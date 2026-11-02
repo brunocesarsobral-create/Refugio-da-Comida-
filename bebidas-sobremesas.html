@@ -20,7 +20,9 @@
         .secao { margin-bottom: 30px; }
         .secao h2 { font-size: 22px; margin-bottom: 18px; border-bottom: 2px solid var(--dourado); padding-bottom: 8px; }
         
-        .opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .bebidas-fotos { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; margin:0 0 18px; }
+.bebidas-fotos img { width:100%; height:180px; object-fit:cover; border-radius:10px; }
+.opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
         .opcao { 
             background: #fff; 
             padding: 15px; 
@@ -84,15 +86,16 @@
 <main>
     <a href="index.html" class="voltar">← Voltar ao Cardápio</a>
     
-    <h1>🥤 BEBIDAS & 🍮 SOBREMESAS</h1>
+    <h1>🍮 SOBREMESAS & DOCES</h1>
     <p class="subtitulo">Clique nos itens que deseja pedir</p>
-
-    <img class="foto-destaque" src="https://shopsupermercadobrazil.com/cdn/shop/articles/PudimLeiteCondensado.jpg?v=1732408648" alt="Pudim caseiro com calda de caramelo" onerror="this.src='https://p2.trrsf.com/image/fget/cf/1200/900/middle/images.terra.com/2018/10/19/mousse-camadas-limao-chocolate.jpg'">
-
-    <!-- BEBIDAS -->
+<!-- BEBIDAS -->
     <div class="secao">
         <h2>🥤 Bebidas</h2>
-        <div class="opcoes" id="bebidas">
+        <div class="bebidas-fotos">
+<img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=900&q=85" alt="Refrigerantes gelados" onerror="this.style.display='none'">
+<img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85" alt="Sucos de frutas" onerror="this.style.display='none'">
+</div>
+<div class="opcoes" id="bebidas">
             <div class="opcao" data-valor="Água 1,5 L" data-preco="7"><div class="opcao-nome">Água 1,5 L</div><div class="preco">R$ 7,00</div></div>
             <div class="opcao" data-valor="Refrigerante lata 350 ml" data-preco="6"><div class="opcao-nome">Refrigerante lata 350 ml</div><div class="preco">R$ 6,00</div></div>
             <div class="opcao" data-valor="Refrigerante 600 ml" data-preco="8"><div class="opcao-nome">Refrigerante 600 ml</div><div class="preco">R$ 8,00</div></div>
@@ -110,9 +113,9 @@
         <h2>🍮 Sobremesas</h2>
         <div class="opcoes" id="sobremesas">
             <div class="opcao" data-valor="Pudim" data-preco="8"><img src="https://shopsupermercadobrazil.com/cdn/shop/articles/PudimLeiteCondensado.jpg?v=1732408648" alt="Pudim com calda de caramelo" onerror="this.style.display='none'"><div class="opcao-nome">Pudim</div><div class="preco">R$ 8,00</div></div>
-            <div class="opcao" data-valor="Mousse de limão" data-preco="8"><img src="https://images.cooknenjoy.com/uploads/2018/03/mousse-limao-01.jpg" alt="Mousse de limão" onerror="this.style.display='none'"><div class="opcao-nome">Mousse de limão</div><div class="preco">R$ 8,00</div></div>
-            <div class="opcao" data-valor="Mousse de chocolate" data-preco="8"><img src="https://p2.trrsf.com/image/fget/cf/1200/900/middle/images.terra.com/2018/10/19/mousse-camadas-limao-chocolate.jpg" alt="Mousse de chocolate" onerror="this.style.display='none'"><div class="opcao-nome">Mousse de chocolate</div><div class="preco">R$ 8,00</div></div>
-            <div class="opcao" data-valor="Mousse de maracujá" data-preco="8"><img src="https://p2.trrsf.com/image/fget/cf/1200/900/middle/images.terra.com/2018/10/19/mousse-camadas-limao-chocolate.jpg" alt="Mousse de maracujá" onerror="this.style.display='none'"><div class="opcao-nome">Mousse de maracujá</div><div class="preco">R$ 8,00</div></div>
+            <div class="opcao" data-valor="Mousse de limão" data-preco="8"><img src="https://media.velocidadcuchara.com/uploads/2010/12/10121423/MOUSSE-CON-MARACUYA-H26.png" alt="Mousse de limão" onerror="this.style.display='none'"><div class="opcao-nome">Mousse de limão</div><div class="preco">R$ 8,00</div></div>
+            <div class="opcao" data-valor="Mousse de chocolate" data-preco="8"><img src="https://uploads.leouve.com.br/2026/04/ChatGPT-Image-31-de-mar.-de-2026-15_26_16-1000x667.png" alt="Mousse de chocolate" onerror="this.style.display='none'"><div class="opcao-nome">Mousse de chocolate</div><div class="preco">R$ 8,00</div></div>
+            <div class="opcao" data-valor="Mousse de maracujá" data-preco="8"><img src="https://uploads.leouve.com.br/2026/04/ChatGPT-Image-31-de-mar.-de-2026-15_26_16-1000x667.png" alt="Mousse de maracujá" onerror="this.style.display='none'"><div class="opcao-nome">Mousse de maracujá</div><div class="preco">R$ 8,00</div></div>
         </div>
     </div>
 
