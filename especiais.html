@@ -214,6 +214,38 @@ nav.menu-fixo + div { margin-top:16px !important; }
   .opcao img { height:230px !important; }
 }
 
+
+/* Amplia a área dos pratos e a largura das fotos */
+main {
+  max-width: 1400px !important;
+  grid-template-columns: minmax(0, 1fr) 280px !important;
+  gap: 24px !important;
+  padding-left: 3% !important;
+  padding-right: 3% !important;
+}
+.opcoes {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  width: 100% !important;
+}
+.opcao {
+  min-width: 0 !important;
+  padding: 14px !important;
+}
+.opcao img {
+  width: 100% !important;
+  height: 250px !important;
+  object-fit: cover !important;
+}
+@media(max-width: 900px) {
+  main { grid-template-columns: 1fr !important; }
+  .opcoes { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .opcao img { height: 220px !important; }
+}
+@media(max-width: 560px) {
+  .opcoes { grid-template-columns: 1fr !important; }
+  .opcao img { height: 250px !important; }
+}
 </style>
 </head>
 <body>
