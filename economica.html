@@ -213,13 +213,40 @@ nav.menu-fixo + .voltar { margin-top: 8px !important; }
 nav.menu-fixo + h1,
 nav.menu-fixo + p { margin-top: 8px !important; }
 
+/* Slogan e nome da marmitaria padronizados no canto superior esquerdo */
+header.topo-padrao .identidade-marca {
+  display:flex !important; flex-flow:row wrap !important;
+  align-items:center !important; justify-content:flex-start !important;
+  gap:12px !important; min-width:0 !important;
+}
+header.topo-padrao .slogan-topo {
+  display:inline-block !important; color:#fff8e8 !important;
+  font:600 13px/1.25 Arial,sans-serif !important;
+  white-space:normal !important;
+}
+header.topo-padrao .logo {
+  display:inline-block !important; color:#f5c500 !important;
+  font:800 18px/1.2 Arial,sans-serif !important;
+  text-decoration:none !important; white-space:nowrap !important;
+}
+@media(max-width:700px) {
+  header.topo-padrao .identidade-marca {
+    flex-direction:column !important; align-items:flex-start !important;
+    gap:2px !important;
+  }
+  header.topo-padrao .slogan-topo {font-size:10px !important;}
+  header.topo-padrao .logo {font-size:14px !important;}
+}
 </style>
 </head>
 <body>
 
 
 <header class="topo-padrao">
-  <a href="index.html" class="logo">REFÚGIO DA COMIDA</a>
+  <div class="identidade-marca">
+    <span class="slogan-topo">Comida de verdade, feita com carinho</span>
+    <a href="index.html" class="logo">REFÚGIO DA COMIDA</a>
+  </div>
   <a href="https://wa.me/5511966620625" target="_blank" rel="noopener" class="btn-whats">📲 (11) 96662-0625</a>
 </header>
 <nav class="menu-fixo">
