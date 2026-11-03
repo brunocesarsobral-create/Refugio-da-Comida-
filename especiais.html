@@ -182,6 +182,38 @@ nav.menu-fixo + h1,
 nav.menu-fixo + p,
 nav.menu-fixo + div { margin-top:16px !important; }
 
+
+/* Pratos especiais maiores e mais fáceis de visualizar */
+.opcoes {
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:20px !important;
+}
+.opcao {
+  padding:18px !important;
+  border-radius:12px !important;
+}
+.opcao img {
+  display:block !important;
+  width:100% !important;
+  height:220px !important;
+  object-fit:cover !important;
+  border-radius:9px !important;
+  margin:0 auto 12px !important;
+}
+.opcao h3, .opcao .nome, .opcao strong {
+  font-size:19px !important;
+  line-height:1.3 !important;
+}
+@media(max-width:900px) {
+  .opcoes { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  .opcao img { height:190px !important; }
+}
+@media(max-width:560px) {
+  .opcoes { grid-template-columns:1fr !important; }
+  .opcao img { height:230px !important; }
+}
+
 </style>
 </head>
 <body>
