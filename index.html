@@ -80,6 +80,22 @@
         
         footer { background: var(--escuro); color: #fff; padding: 25px 5%; text-align: center; margin-top: 30px; font-size: 13px; }
         footer a { color: var(--dourado); text-decoration: none; font-weight: bold; }
+    
+/* Menu superior fixo em todas as páginas */
+.menu-fixo {
+ position: sticky !important; top: 0; z-index: 9999;
+ display: flex; flex-wrap: nowrap; align-items: center; gap: 6px;
+ width: 100%; padding: 10px max(14px, calc((100% - 1200px)/2));
+ background: #1a1208; box-shadow: 0 3px 12px rgba(0,0,0,.22);
+ overflow-x: auto; white-space: nowrap; scrollbar-width: thin;
+}
+.menu-fixo a {
+ flex: 0 0 auto; display: inline-block; color: #fff8e8 !important;
+ text-decoration: none; font-size: 13px; font-weight: 700;
+ padding: 9px 12px; border-radius: 7px; transition: background .2s;
+}
+.menu-fixo a:hover, .menu-fixo a:focus { background: #f5c500; color: #1a1208 !important; }
+
     </style>
 </head>
 <body>
@@ -89,15 +105,17 @@
         REFÚGIO DA COMIDA
         <span>Comida de verdade, feita com carinho</span>
     </div>
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="economica.html">Econômica</a>
-        <a href="monte-sua-marmita.html">Monte Sua Marmita</a>
-        <a href="frango.html">Frango</a>
-        <a href="carne.html">Carne</a>
-        <a href="especiais.html">Especiais</a>
-        <a href="bebidas-sobremesas.html">Bebidas &amp; Sobremesas</a>
-    </nav>
+    <nav class="menu-fixo">
+  <a href="index.html">Início</a>
+  <a href="economica.html">Econômica</a>
+  <a href="monte-sua-marmita.html">Monte sua Marmita</a>
+  <a href="frango.html">Frango</a>
+  <a href="carne.html">Carne</a>
+  <a href="especiais.html">Especiais</a>
+  <a href="peixe.html">Peixes</a>
+  <a href="lanches.html">Lanches</a>
+  <a href="bebidas-sobremesas.html">Bebidas &amp; Sobremesas</a>
+</nav>
 
 </header>
 
